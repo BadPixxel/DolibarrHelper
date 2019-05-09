@@ -97,7 +97,7 @@ trait HtmlBuilderTrait
     {
         //====================================================================//
         //  Merge Defaults with Custom Attributes
-        $attributes = array_replace($default, is_array($custom) ? $custom : array());
+        $attributes = (array) array_replace($default, is_array($custom) ? $custom : array());
         //====================================================================//
         //  Build Attributes String
         $attrString = "";

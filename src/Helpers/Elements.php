@@ -165,12 +165,12 @@ class Elements extends AbstractHelper
      *
      * @param string     $path       File path
      * @param string     $title      Image Title
-     * @param null|array $attr       Display Attributes
+     * @param nullarray $attr       Display Attributes
      * @param string     $modulepart Use Dolibar viewimage function as a specific module
      *
      * @return string
      */
-    public function imageWithLink(string $path, string $title, array $attr, string $modulepart = null): string
+    public function imageWithLink(string $path, string $title, array $attr = null, string $modulepart = null): string
     {
         //====================================================================//
         // Setup of image link with ModulePart management

@@ -109,8 +109,6 @@ class Forms extends AbstractHelper
      *
      * @param string          $name    Parameter Name
      * @param bool|int|string $state   Current Parameter Value (0/1)
-     * @param string          $param   Others Parameter to add html link
-     * @param Context         $context Display Context. Default Used if null.
      * @param array           $query   Query Parameter
      * @param array           $attr    Display Attributes
      *

@@ -21,3 +21,7 @@ require_once(dirname(dirname(dirname(__DIR__)))."/vendor/autoload.php");
 //====================================================================//
 // Boot Dolibarr (Master Only)
 Helper::dol()->boot();
+
+//====================================================================//
+// Include Dolibarr Libs (dol_include_once not working with PhpStan)
+dol_include_once('/core/class/html.form.class.php');

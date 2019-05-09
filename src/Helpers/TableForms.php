@@ -67,7 +67,7 @@ class TableForms extends Tables
         //====================================================================//
         //  Upate Value if Requested
         if (($action == GETPOST('action')) && GETPOSTISSET($name)) {
-            if (Helper::dol()->setConst($name, GETPOST($name))) {
+            if (Helper::dol()->setConst($name, (string) GETPOST($name))) {
                 $current = GETPOST($name);
             }
         }
