@@ -315,11 +315,11 @@ class Elements extends AbstractHelper
      *
      * @param int $count Number of lines
      *
-     * @return string
+     * @return $this
      *
      * @SuppressWarnings(PHPMD.ShortMethodName)
      */
-    public function br(int $count = 1): string
+    public function br(int $count = 1): self
     {
         for ($i = 0; $i < $count; $i++) {
             $this->add("<br />");
@@ -331,11 +331,11 @@ class Elements extends AbstractHelper
     /**
      * Return empty Separator
      *
-     * @return string
+     * @return $this
      *
      * @SuppressWarnings(PHPMD.ShortMethodName)
      */
-    public function hr(): string
+    public function hr(): self
     {
         return $this->add("<hr />")->render();
     }

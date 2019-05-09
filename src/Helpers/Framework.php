@@ -67,7 +67,7 @@ class Framework extends AbstractHelper
         }
         //====================================================================//
         // Try main.inc.php into web root known defined into CONTEXT_DOCUMENT_ROOT (not always defined)
-        if (!empty($_SERVER["CONTEXT_DOCUMENT_ROOT"] && is_file($_SERVER["CONTEXT_DOCUMENT_ROOT"]."/main.inc.php"))) {
+        if (isset($_SERVER["CONTEXT_DOCUMENT_ROOT"]) && is_file($_SERVER["CONTEXT_DOCUMENT_ROOT"]."/main.inc.php")) {
             return $this->rootPath = $_SERVER["CONTEXT_DOCUMENT_ROOT"];
         }
         //====================================================================//

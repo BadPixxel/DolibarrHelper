@@ -298,9 +298,7 @@ class Helper
     }
 
     /**
-     * Class Constructor
-     *
-     * @param bool $debug Force Debug Flag
+     * Init the Helper
      */
     private static function init()
     {
