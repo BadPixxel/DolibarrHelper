@@ -1,6 +1,6 @@
-includes:
-	- ../../vendor/phpstan/phpstan-phpunit/extension.neon
+#includes:
+#	- ../../vendor/phpstan/phpstan-phpunit/extension.neon
 parameters:
-    bootstrap: "./Resources/grumphp/phpstan.php"
+    bootstrap: "./src/Resources/grumphp/phpstan.php"
     universalObjectCratesClasses:
             - ArrayObject

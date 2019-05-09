@@ -15,8 +15,6 @@
 
 namespace BadPixxel\Dolibarr\Helpers;
 
-use BadPixxel\Dolibarr\Helper;
-
 use BadPixxel\Dolibarr\Models\AbstractHelper;
 
 /**
@@ -26,13 +24,15 @@ class Framework extends AbstractHelper
 {
     /**
      * Detect Document Root Path
-     * 
+     *
      * @var null|string
      */
     private $rootPath;
-    
+
     /**
      * Detect Main Include File Path to Boot Dolibarr Envirenement
+     *
+     * @SuppressWarnings(PHPMD.ExitExpression)
      */
     public function inc(): string
     {
@@ -47,27 +47,29 @@ class Framework extends AbstractHelper
         //====================================================================//
         // Return Path to Dolibarr MainInclude
         return $rootPath."/main.inc.php";
-    }  
-    
+    }
+
     /**
      * Search for Dolibarr Root Folder in upper folders
      *
      * @param int $maxLevels Mximim Number of Levels
-     * 
+     *
      * @return null|string
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
      */
     public function getRootPath(int $maxLevels = 5): ?string
     {
         //====================================================================//
         // Already Detected ?
-        if(isset($this->rootPath)) {
+        if (isset($this->rootPath)) {
             return $this->rootPath;
         }
         //====================================================================//
         // Try main.inc.php into web root known defined into CONTEXT_DOCUMENT_ROOT (not always defined)
         if (!empty($_SERVER["CONTEXT_DOCUMENT_ROOT"] && is_file($_SERVER["CONTEXT_DOCUMENT_ROOT"]."/main.inc.php"))) {
             return $this->rootPath = $_SERVER["CONTEXT_DOCUMENT_ROOT"];
-        }        
+        }
         //====================================================================//
         // Always Start From Folder Above this module
         $rootPath = __DIR__;
@@ -86,9 +88,10 @@ class Framework extends AbstractHelper
             // Move one folder above
             $rootPath = dirname($rootPath);
         }
+
         return null;
     }
-    
+
     /**
      * Security checks - Protection if User is NOT Logged
      */
@@ -99,10 +102,11 @@ class Framework extends AbstractHelper
         // Check User is Logged
         if (empty($user)) {
             accessforbidden();
-        }        
+        }
+
         return $this;
     }
-    
+
     /**
      * Security checks - Protection if User is Not Internal
      */
@@ -114,12 +118,13 @@ class Framework extends AbstractHelper
         $this->isLogged();
         //====================================================================//
         // Protection if external user
-        if ($user->societe_id > 0){
+        if ($user->societe_id > 0) {
             accessforbidden();
         }
+
         return $this;
-    }     
-    
+    }
+
     /**
      * Security checks - Protection if User is Not Admin
      */
@@ -133,22 +138,23 @@ class Framework extends AbstractHelper
         // Check User Rights
         if (!$user->admin) {
             accessforbidden();
-        }        
+        }
+
         return $this;
-    }     
-    
+    }
+
     /**
      * Detect File Url from Absolute Path
      *
      * @param string $path
-     * 
+     *
      * @return null|string
      */
     public function pathToUrl(string $path): string
     {
         //====================================================================//
         // Safety Checks
-        if(empty($this->getRootPath()) || !is_file($path)) {
+        if (empty($this->getRootPath()) || !is_file($path)) {
             return dol_buildpath("theme/eldy/img/warning.png", 1);
         }
         //====================================================================//
@@ -157,9 +163,10 @@ class Framework extends AbstractHelper
         if (!is_array($relPath) || !isset($relPath[1])) {
             return dol_buildpath("theme/eldy/img/warning.png", 1);
         }
+
         return dol_buildpath($relPath[1], 1);
-    }  
-    
+    }
+
     /**
      * Safe Get of A Global Parameter
      *
@@ -171,40 +178,42 @@ class Framework extends AbstractHelper
     public static function getConst(string $key, string $default = null)
     {
         global $conf;
+
         return isset($conf->global->{$key})  ? $conf->global->{$key} : $default;
     }
 
     /**
      * Safe Set of A Global Parameter
      *
-     * @param string $key     Global Parameter Key
+     * @param string $key   Global Parameter Key
      * @param string $value Default Parameter Value
+     * @param mixed  $type
      *
      * @return bool
      */
     public static function setConst(string $key, $value, $type = "chaine"): bool
     {
         global $db, $conf, $langs;
-        
+
         //====================================================================//
         // Update value in Database
         $res = dolibarr_set_const($db, $key, $value, $type, 0, '', $conf->entity);
         //====================================================================//
         // Display user message
         if ($res) {
-            setEventMessages($langs->trans('RecordSaved'), null, 'mesgs');   
-            
+            setEventMessages($langs->trans('RecordSaved'), null, 'mesgs');
+
             return true;
         }
-        setEventMessages($langs->trans('Error'), null, 'error');   
-        
+        setEventMessages($langs->trans('Error'), null, 'error');
+
         return false;
-    } 
-    
+    }
+
     /**
      * Safe Get of A Dolibarr Path Url
      *
-     * @param string $relativePath     Relitive Uri Path
+     * @param string $relativePath Relitive Uri Path
      *
      * @return string
      */
@@ -214,24 +223,26 @@ class Framework extends AbstractHelper
         // Link to Current Uri
         if ("#" == $relativePath) {
             return self::getCurrentUri();
-        }        
+        }
         //====================================================================//
         // Link to Current Uri with Anchor
-        if (strpos($relativePath, "#") === 0) {
-            return self::getCurrentUri() . $relativePath;
+        if (0 === strpos($relativePath, "#")) {
+            return self::getCurrentUri().$relativePath;
         }
         //====================================================================//
         // Link to Another Relative Path
         return dol_buildpath($relativePath, 1);
-    } 
-    
+    }
+
     /**
      * Safe Get Current User Uri
      *
      * @return string
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
      */
     public static function getCurrentUri(): string
     {
         return $_SERVER["PHP_SELF"];
-    }       
+    }
 }

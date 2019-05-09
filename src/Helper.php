@@ -15,16 +15,18 @@
 
 namespace BadPixxel\Dolibarr;
 
-use BadPixxel\Dolibarr\Helpers\Framework;
 use BadPixxel\Dolibarr\Helpers\Card;
 use BadPixxel\Dolibarr\Helpers\Elements;
-use BadPixxel\Dolibarr\Helpers\Tables;
-use BadPixxel\Dolibarr\Helpers\TableForms;
 use BadPixxel\Dolibarr\Helpers\Forms;
+use BadPixxel\Dolibarr\Helpers\Framework;
 use BadPixxel\Dolibarr\Helpers\Logger;
+use BadPixxel\Dolibarr\Helpers\TableForms;
+use BadPixxel\Dolibarr\Helpers\Tables;
 
 /**
  * BadPixxel Dolibarr Helpers Core Access Class
+ *
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class Helper
 {
@@ -76,30 +78,13 @@ class Helper
      * @var Logger
      */
     private static $logger;
-    
-    /**
-     * Class Constructor
-     *
-     * @param bool $debug Force Debug Flag
-     */
-    private static function init()
-    {
-        //====================================================================//
-        // Already Done
-        if (defined('DOL_HELPER_VERSION')) {
-            return;
-        }        
-        //====================================================================//
-        // Include Constants Definitions
-        require_once __DIR__.'/Conf/defines.inc.php';
-    }
-    
+
     /**
      * Return name of this library
      *
-     * @return	string
+     * @return string
      */
-    public function getName()
+    public static function getName()
     {
         return DOL_HELPER_CODE;
     }
@@ -109,26 +94,26 @@ class Helper
      *
      * @return string Name of logger
      */
-    public function getDesc()
+    public static function getDesc()
     {
         return DOL_HELPER_NAME;
     }
-    
+
     /**
      * Version of the Helper or Library Version
      *
      * @return string
      */
-    public function getVersion()
+    public static function getVersion()
     {
         return DOL_HELPER_VERSION;
-    }    
-    
+    }
+
     //====================================================================//
     //  STATIC CLASS ACCESS
     //  Creation & Acces to all subclasses Instances
     //====================================================================//
-    
+
     /**
      * Acces to all Dolibarr Framework Core Functions
      *
@@ -144,9 +129,10 @@ class Helper
             //  Load Framework Helper
             static::$framework = new Framework();
         }
+
         return static::$framework;
-    }    
-    
+    }
+
     /**
      * Acces to Library Id Card Functions
      *
@@ -162,9 +148,10 @@ class Helper
             //  Load Card Helper
             static::$card = new Card();
         }
+
         return static::$card;
-    }  
-    
+    }
+
     /**
      * Acces to Html Tables Functions
      *
@@ -180,9 +167,10 @@ class Helper
             //  Load Tables Helper
             static::$tables = new Tables();
         }
+
         return static::$tables;
     }
-    
+
     /**
      * Acces to Html Simples Elements Functions
      *
@@ -198,9 +186,10 @@ class Helper
             //  Load Html Elements Helper
             static::$elements = new Elements();
         }
+
         return static::$elements;
     }
-    
+
     /**
      * Acces to Forms Elements Functions
      *
@@ -216,9 +205,10 @@ class Helper
             //  Load Forms Elements Helper
             static::$forms = new Forms();
         }
+
         return static::$forms;
-    }   
-    
+    }
+
     /**
      * Acces to Generic Tables Forms Functions
      *
@@ -234,8 +224,9 @@ class Helper
             //  Load Tables Helper
             static::$tableForms = new TableForms();
         }
+
         return static::$tableForms;
-    } 
+    }
 
     /**
      * Acces to Logger Functions
@@ -252,17 +243,18 @@ class Helper
             //  Load Logger Helper
             static::$logger = new Logger();
         }
+
         return static::$logger;
     }
 
     //====================================================================//
     //  Fastlane Actions
     //====================================================================//
-    
+
     /**
      * Safe Get of A Global Parameter
      *
-     * @param string $key     Global Parameter Key
+     * @param string $key Global Parameter Key
      *
      * @return null|mixed
      */
@@ -270,20 +262,19 @@ class Helper
     {
         return self::dol()->getConst($key);
     }
-    
+
     /**
      * Safe Get of A Dolibarr Path Url
      *
-     * @param string $relativePath     Relitive Uri Path
+     * @param string $relativePath Relitive Uri Path
      *
      * @return string
      */
     public static function uri(string $relativePath = ""): string
     {
         return self::dol()->getUri($relativePath);
-    } 
-    
-    
+    }
+
     /**
      * Safe Get Current User Uri
      *
@@ -292,18 +283,34 @@ class Helper
     public static function self(): string
     {
         return self::dol()->getCurrentUri();
-    }  
-    
+    }
+
     /**
      * Read & Returns print_r() of a variable in a warning message
      *
-     * @param mixed  $var Any Object to dump
+     * @param mixed $var Any Object to dump
      *
      * @return true
      */
     public static function ddd($var): bool
     {
-        return Logger::warning('<PRE>'.print_r($var, true).'</PRE>');
+        return self::log()->warning('<PRE>'.print_r($var, true).'</PRE>');
+    }
+
+    /**
+     * Class Constructor
+     *
+     * @param bool $debug Force Debug Flag
+     */
+    private static function init()
+    {
+        //====================================================================//
+        // Already Done
+        if (defined('DOL_HELPER_VERSION')) {
+            return;
+        }
+        //====================================================================//
+        // Include Constants Definitions
+        require_once __DIR__.'/Conf/defines.inc.php';
     }
 }
-

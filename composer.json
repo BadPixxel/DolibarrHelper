@@ -1,6 +1,7 @@
 {
     "name":                 "badpixxel/dol-helper",
     "description":          "This library is a set of Simple & Usefull Helpers for Dolibarr Framework.",
+    "keywords":             ["Dolibarr", "Library", "PHP", "Framework", "Tools"],
     "type":                 "package",    
     "prefer-stable":        true,
     "license":              "MIT",

@@ -29,7 +29,7 @@ class Forms extends AbstractHelper
     /**
      * @var string
      */
-    public static $helperDesc = 'Unified & Simplified HTML Forms Generator. All major forms features unified and compliant with Dolibarr folders & themes.';
+    public static $helperDesc = 'Simplified HTML Forms. All major forms features unified and compliant with Dolibarr.';
 
     /**
      * Return form begin with accociated Action  & Additionnal Parameters
@@ -39,6 +39,8 @@ class Forms extends AbstractHelper
      * @param array  $param  Hidden Parameters Array
      *
      * @return $this
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
      */
     public function new(string $name, string $action, array $param = array()): self
     {
@@ -112,9 +114,9 @@ class Forms extends AbstractHelper
      * @param array           $query   Query Parameter
      * @param array           $attr    Display Attributes
      *
-     * @return None
+     * @return string
      */
-    public static function switch(string $name, $state, array $query = array(), $attr = array())
+    public static function switch(string $name, $state, array $query = array(), array $attr = array()): string
     {
         global $langs;
         //====================================================================//
@@ -129,73 +131,61 @@ class Forms extends AbstractHelper
             ? img_picto($langs->trans("Enabled"), 'switch_on')
             : img_picto($langs->trans("Disabled"), 'switch_off');
 
-        return  Helper::html()->absoluteLink($_SERVER["PHP_SELF"], $text, $switchQuery, $attr);
+        return  Helper::html()->absoluteLink(Helper::self(), $text, $switchQuery, $attr);
     }
 
-    /**
-     *  Add a value to a combo form
-     *
-     *  @param      string   $name       Parameter Name
-     *  @param      string   $value      Parameter Value
-     *  @param      string   $current    Currently selected
-     *
-     *  @return     None
-     */
-    public static function R_Combo($name, $value, $current)
-    {
-        if ($current == $value) {
-            return '<option value="'.$value.'" selected="true">'.$name.'</option>';
-        }
-
-        return '<option value="'.$value.'">'.$name.'</option>';
-    }
+//    /**
+//     * Add a value to a combo form
+//     *
+//     * @param string $name    Parameter Name
+//     * @param string $value   Parameter Value
+//     * @param string $current Currently selected
+//     *
+//     * @return string
+//     */
+//    public static function R_Combo($name, $value, $current): string
+//    {
+//        if ($current == $value) {
+//            return '<option value="'.$value.'" selected="true">'.$name.'</option>';
+//        }
+//
+//        return '<option value="'.$value.'">'.$name.'</option>';
+//    }
 
     //====================================================================//
     //  Display Buttons Outputs
     //====================================================================//
 
     /**
-     *  Display a single submit button without any decoration
+     * Display a single submit button without any decoration
      *
-     *  @param      string   $text       Button text
-     *  @param      string   $context    Display context.
+     * @param string $text Button text
+     * @param array  $attr Display Attributes
      *
-     *  @return     None
+     * @return string
      */
-    public function R_Submit($text, $context = null)
+    public function submit($text, array $attr = array()): string
     {
-        global $da;
-        // Load parameters form conext
-        if (("NoStyle" == $context)) {
-            $param = null;
-        } elseif (isset($da->ctxt[$context]->Button)) {
-            $param = $da->ctxt[$context]->Button;
-        } else {
-            $param = 'class="butAction"';
-        }
+        $submitAttr = array_replace(array("class" => "butAction"), $attr);
 
-        return "<input type=\"submit\" ".$param." value=\"".$text."\">";
+        return $this->input("submit", "", $text, $submitAttr)->getHtml();
     }
 
-    /**
-     *  Display a single submit button with standard decoration
-     *
-     *  @param      string   $text       Button text
-     *  @param      string   $param      Others Parameter to add html link
-     *  @param      string   $align      button align (default is center)
-     * @param mixed $params
-     *
-     *  @return     None
-     */
-    public function SubmitButton2($text, $params = '', $align = 'center')
-    {
-        print '<div align="'.$align.'">';
-        print '<a href="'.$_SERVER["PHP_SELF"].'?'.$params.'" class="button"> ';
-        print '<input type="submit" class="button" value="'.$text.'">';
-        print '</a>';
-        print '&nbsp;&nbsp;&nbsp;';
-        print "</div>";
-    }
+//    /**
+//     * Display a single submit button with standard decoration
+//     *
+//     * @param      string   $text       Button text
+//     * @param array  $attr Display Attributes
+//     *
+//     *  @return     string
+//     */
+//    public function submitBtn(string $text, $params = '', $align = 'center'): string
+//    {
+//        print '<a href="'.$_SERVER["PHP_SELF"].'?'.$params.'" class="button"> ';
+//        print '<input type="submit" class="button" value="'.$text.'">';
+//        print '</a>';
+//        print '&nbsp;&nbsp;&nbsp;';
+//    }
 
     /**
      * Add Generic Form Input to Buffer

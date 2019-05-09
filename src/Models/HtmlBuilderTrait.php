@@ -37,7 +37,7 @@ trait HtmlBuilderTrait
 
         return $html;
     }
-    
+
     /**
      * Echo Html Buffer & Clear
      *
@@ -49,7 +49,7 @@ trait HtmlBuilderTrait
         $this->clear();
 
         return $this;
-    }    
+    }
 
     /**
      * Add to Html Buffer
@@ -84,13 +84,13 @@ trait HtmlBuilderTrait
     {
         return empty($this->html);
     }
-    
+
     /**
      * Merge Two Array of Html Attributes and return Attributes String
-     * 
-     * @param array $default
+     *
+     * @param array      $default
      * @param null|array $custom
-     * 
+     *
      * @return string
      */
     protected static function attr(array $default, array $custom = null): string
@@ -102,19 +102,19 @@ trait HtmlBuilderTrait
         //  Build Attributes String
         $attrString = "";
         foreach ($attributes as $key => $value) {
-            $attrString .= $key .'="'. $value .'" ';
+            $attrString .= $key.'="'.$value.'" ';
         }
         //====================================================================//
         //  Retun Attributes String
         return $attrString;
     }
-    
+
     /**
      * Merge Two Array of Query Values and return Html Query String
-     * 
-     * @param array $default
+     *
+     * @param array      $default
      * @param null|array $custom
-     * 
+     *
      * @return string
      */
     protected static function toQuery(array $default = null, array $custom = null): string
@@ -122,12 +122,12 @@ trait HtmlBuilderTrait
         //====================================================================//
         //  Merge Defaults with Custom Attributes
         $query = array_replace(
-                is_array($default) ? $default : array(), 
-                is_array($custom) ? $custom : array()
+            is_array($default) ? $default : array(),
+            is_array($custom) ? $custom : array()
         );
         //====================================================================//
         //  If Empty Attributes
-        if(empty($query)) {
+        if (empty($query)) {
             return "";
         }
         //====================================================================//
@@ -136,11 +136,11 @@ trait HtmlBuilderTrait
         $first = true;
         foreach ($query as $key => $value) {
             $queryString .= $first ? '?' : '&';
-            $queryString .= $key .'='. $value;
+            $queryString .= $key.'='.$value;
             $first = false;
         }
         //====================================================================//
         //  Retun Query String
         return $queryString;
-    }       
+    }
 }

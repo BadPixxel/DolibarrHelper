@@ -23,11 +23,10 @@ ini_set('display_errors', 1);
 
 //====================================================================//
 // Require Autoloader
-require_once( dirname(__DIR__) . "/vendor/autoload.php");
+require_once(dirname(__DIR__)."/vendor/autoload.php");
 //====================================================================//
 // Boot Dolibarr
 include_once(Helper::dol()->inc());
-
 
 //====================================================================//
 //   INITIALISATION
@@ -40,7 +39,6 @@ Helper::dol()->isAdmin();
 //====================================================================//
 //   ACTIONS
 //====================================================================//
-
 
 //====================================================================//
 //   SHOW PAGE
@@ -57,11 +55,14 @@ Helper::tables()->new();
 Helper::tables()->head(array("Head 1", "Head 2", "Head 3", "Head 4"));
 Helper::tables()->row(array("Row 1", "Row 2", "Row 3", "Row 4"));
 Helper::tables()->row(array("1", "2", "3", "4"), array('style' => 'color: red; text-align:center;'), array());
-Helper::tables()->row(array("Row 1", "Row 2", "Row 3", "Row 4"), array(), array(array('style' => 'background-color: gray !important;')));
+Helper::tables()->row(
+    array("Row 1", "Row 2", "Row 3", "Row 4"),
+    array(),
+    array(array('style' => 'background-color: gray !important;'))
+);
 Helper::tables()->row(array("Row 1", "Row 2", "Row 3", "Row 4"));
 Helper::tables()->end()->render();
 Helper::html()->br(2);
-
 
 //====================================================================//
 // Render A Generic Table
@@ -96,7 +97,7 @@ Helper::html()->br(2);
 // Render Logger Demo
 $rows = array(
     Helper::html()->btnDelete("#", "Error", array("doLogger" => "error")),
-    Helper::html()->btnNew("#","Warning", array("doLogger" => "warning")),
+    Helper::html()->btnNew("#", "Warning", array("doLogger" => "warning")),
     Helper::html()->btn("#", "Success", array("doLogger" => "msg")),
     Helper::html()->btn("#", "Dump", array("doDump" => "msg")),
 );
@@ -113,17 +114,16 @@ Helper::tables()->end()->render();
 Helper::html()->br(2);
 //====================================================================//
 // Render Logger Messages
-if(GETPOSTISSET("doLogger")) {
+if (GETPOSTISSET("doLogger")) {
     Helper::log()->{ GETPOST("doLogger", "alpha") }("This is a Démo Message");
 }
-if(GETPOSTISSET("doDump")) {
+if (GETPOSTISSET("doDump")) {
     Helper::ddd(array("Dump" => "This is an Array Dump. Right?"));
 }
 
 //====================================================================//
 // Render Library Id Card
 Helper::card()->render();
-
 
 $db->close();
 llxFooter();

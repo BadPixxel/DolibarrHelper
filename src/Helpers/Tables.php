@@ -47,7 +47,7 @@ class Tables extends AbstractHelper
     /**
      * @var string
      */
-    public static $helperDesc = 'Unified & Simplified HTML Tables Generator. Html tables contents unified and compliant with Dolibarr folders & themes.';
+    public static $helperDesc = 'Simplified HTML Tables Builder. Render tables compliant with Dolibarr & Themes.';
 
     /**
      * Start a New Table
@@ -215,7 +215,7 @@ class Tables extends AbstractHelper
     //====================================================================//
     //  PRIVATE METHODS
     //====================================================================//
-    
+
     /**
      * Add a Table Cell
      *

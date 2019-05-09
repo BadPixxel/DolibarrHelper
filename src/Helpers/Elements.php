@@ -22,6 +22,8 @@ use BadPixxel\Dolibarr\Models\HtmlBuilderTrait;
 /**
  * Build & Render Html Simple Elements Blocks
  * Links, Images, Buttons, and more...
+ *
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class Elements extends AbstractHelper
 {
@@ -30,7 +32,7 @@ class Elements extends AbstractHelper
     /**
      * @var string
      */
-    public static $helperDesc = 'Unified & Simplified HTML Elements Generator. All major structures unified and compliant with Dolibarr folders & themes.';
+    public static $helperDesc = 'Simplified HTML Elements. All major structures unified and compliant with Dolibarr.';
 
     //====================================================================//
     //  Display Icons
@@ -59,7 +61,7 @@ class Elements extends AbstractHelper
      */
     public static function ico($file): string
     {
-        return 	'<img src="'.self::icoUrl($file).'" border="0" width="16" height="16" alt="ICO">&nbsp;&nbsp;';
+        return  '<img src="'.self::icoUrl($file).'" border="0" width="16" height="16" alt="ICO">&nbsp;&nbsp;';
     }
 
     //====================================================================//
@@ -69,10 +71,10 @@ class Elements extends AbstractHelper
     /**
      * Return an Internal Link
      *
-     * @param string     $url  Link target Absolute URL
-     * @param string     $text Link Text
+     * @param string     $url   Link target Absolute URL
+     * @param string     $text  Link Text
      * @param null|array $query Query Parameters
-     * @param null|array $attr Display Attributes
+     * @param null|array $attr  Display Attributes
      *
      * @return string
      */
@@ -84,9 +86,9 @@ class Elements extends AbstractHelper
     /**
      * Return an Internal Link
      *
-     * @param string     $text Link Text
+     * @param string     $text  Link Text
      * @param null|array $query Query Parameters
-     * @param null|array $attr Display Attributes
+     * @param null|array $attr  Display Attributes
      *
      * @return string
      */
@@ -94,14 +96,14 @@ class Elements extends AbstractHelper
     {
         return $this->absoluteLink(Helper::self(), $text, $query, $attr);
     }
-    
+
     /**
      * Return an Absolute Link with standard decoration
      *
-     * @param string     $url  Link target Absolute URL
-     * @param string     $text Link Text
+     * @param string     $url   Link target Absolute URL
+     * @param string     $text  Link Text
      * @param null|array $query Query Parameters
-     * @param null|array $attr Display Attributes
+     * @param null|array $attr  Display Attributes
      *
      * @return string
      */
@@ -191,10 +193,10 @@ class Elements extends AbstractHelper
     /**
      * Return an Internal Button
      *
-     * @param string     $url  Link target Absolute URL
-     * @param string     $text Link Text
+     * @param string     $url   Link target Absolute URL
+     * @param string     $text  Link Text
      * @param null|array $query Query Parameters
-     * @param null|array $attr Display Attributes
+     * @param null|array $attr  Display Attributes
      *
      * @return string
      */
@@ -207,7 +209,7 @@ class Elements extends AbstractHelper
         //  Return generic Link
         return $this->absoluteLink(Helper::uri($url), $text, $query, $btnAttr);
     }
-    
+
     /**
      * Return an Internal Button
      *
@@ -224,15 +226,15 @@ class Elements extends AbstractHelper
         //====================================================================//
         //  Return generic Link
         return $this->absoluteLink("", $text, array(), $btnAttr);
-    }    
+    }
 
     /**
      * Return an Internal Button
      *
-     * @param string     $url  Link target Absolute URL
-     * @param string     $text Link Text
+     * @param string     $url   Link target Absolute URL
+     * @param string     $text  Link Text
      * @param null|array $query Query Parameters
-     * @param null|array $attr Display Attributes
+     * @param null|array $attr  Display Attributes
      *
      * @return string
      */
@@ -245,7 +247,7 @@ class Elements extends AbstractHelper
         //  Return generic Link
         return $this->absoluteLink(Helper::uri($url), $text, $query, $btnAttr);
     }
-    
+
     /**
      * Return an Internal Button New Refused
      *
@@ -262,15 +264,15 @@ class Elements extends AbstractHelper
         //====================================================================//
         //  Return generic Link
         return $this->absoluteLink("", $text, array(), $btnAttr);
-    }    
-    
+    }
+
     /**
      * Return an Internal Button Delete
      *
-     * @param string     $url  Link target Absolute URL
-     * @param string     $text Link Text
+     * @param string     $url   Link target Absolute URL
+     * @param string     $text  Link Text
      * @param null|array $query Query Parameters
-     * @param null|array $attr Display Attributes
+     * @param null|array $attr  Display Attributes
      *
      * @return string
      */
@@ -283,14 +285,14 @@ class Elements extends AbstractHelper
         //  Return generic Link
         return $this->absoluteLink(Helper::uri($url), $text, $query, $btnAttr);
     }
-    
+
     /**
      * Return an Internal Button Transparant
      *
-     * @param string     $url  Link target Absolute URL
-     * @param string     $text Link Text
+     * @param string     $url   Link target Absolute URL
+     * @param string     $text  Link Text
      * @param null|array $query Query Parameters
-     * @param null|array $attr Display Attributes
+     * @param null|array $attr  Display Attributes
      *
      * @return string
      */
@@ -314,26 +316,29 @@ class Elements extends AbstractHelper
      * @param int $count Number of lines
      *
      * @return Html Result
+     *
+     * @SuppressWarnings(PHPMD.ShortMethodName)
      */
     public function br(int $count = 1)
     {
-        for ($i = 0;$i < $count;$i++) {
+        for ($i = 0; $i < $count; $i++) {
             $this->add("<br />");
         }
 
         return $this->render();
     }
-    
+
     /**
      * Return empty Separator
      *
      * @param int $count Number of lines
      *
      * @return Html Result
+     *
+     * @SuppressWarnings(PHPMD.ShortMethodName)
      */
     public function hr()
     {
         return $this->add("<hr />")->render();
     }
-    
 }

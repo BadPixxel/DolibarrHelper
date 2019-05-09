@@ -1,27 +1,21 @@
 <?php
 
 /*
- * This file is part of BadPixxel ProductMixer Module.
+ * This file is part of BadPixxel Dolibarr Helper Library.
  *
  * Copyright (C) 2015-2019 BadPixxel  <www.badpixxel.com>
- *
- * This program is free software: you can redistribute it
- * and/or modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation, version 3.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * long with this program. If not, see <https://www.gnu.org/licenses/>.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace BadPixxel\Dolibarr\Helpers;
 
 use BadPixxel\Dolibarr\Models\AbstractHelper;
-use BadPixxel\Dolibarr\Models\HtmlBuilderTrait;
 
 /**
  * Build & Render Tables Blocks
@@ -39,21 +33,19 @@ class Logger extends AbstractHelper
     public function __construct()
     {
         global $langs;
-        
+
         // Load traductions files requiredby by page
         $langs->load("errors");
     }
-    
-
 
     /**
      * Display an emergency message.
      * Dolibarr Event level :  errors
      * Dolibarr LOG level :    LOG_EMERG
      *
-     * @param      string   $text      Message Text
+     * @param string $text Message Text
      *
-     * @return     false
+     * @return false
      */
     public static function emerg(string $text): bool
     {
@@ -68,9 +60,9 @@ class Logger extends AbstractHelper
      * Dolibarr Event level :  errors
      * Dolibarr LOG level :    LOG_ERR
      *
-     * @param      string   $text      Message Text
+     * @param string $text Message Text
      *
-     * @return     false
+     * @return false
      */
     public static function error(string $text): bool
     {
@@ -85,9 +77,9 @@ class Logger extends AbstractHelper
      * Dolibarr Event level :  warnings
      * Dolibarr LOG level :    LOG_WARNING
      *
-     * @param      string   $text      Message Text
+     * @param string $text Message Text
      *
-     * @return     true
+     * @return true
      */
     public static function warning(string $text): bool
     {
@@ -102,9 +94,9 @@ class Logger extends AbstractHelper
      * Dolibarr Event level :  mesgs
      * Dolibarr LOG level :    LOG_INFO
      *
-     * @param      string   $text      Message Text
+     * @param string $text Message Text
      *
-     * @return     true
+     * @return true
      */
     public static function msg(string $text): bool
     {
@@ -113,15 +105,15 @@ class Logger extends AbstractHelper
 
         return true;
     }
-    
+
     /**
      * Display an logging message. Can be used for debug with temporary HMI feedback.
      * Dolibarr Event level :  mesgs if DA_LOG_SHOWDEBUG and SYSLOG_LEVEL >= 5
      * Dolibarr LOG level :    LOG_NOTICE
      *
-     * @param      string   $text      Message Text
+     * @param string $text Message Text
      *
-     * @return     true
+     * @return true
      */
     public static function log(string $text): bool
     {
@@ -140,9 +132,9 @@ class Logger extends AbstractHelper
      * Dolibarr Event level :  warnings if DA_LOG_SHOWDEBUG and SYSLOG_LEVEL >= 6
      * Dolibarr LOG level :    LOG_DEBUG
      *
-     * @param      string   $text      Message Text
+     * @param string $text Message Text
      *
-     * @return     true
+     * @return true
      */
     public static function debug(string $text): bool
     {
@@ -155,17 +147,16 @@ class Logger extends AbstractHelper
 
         return true;
     }
-    
+
     /**
      * Read & Returns print_r() of a variable in a warning message
      *
-     * @param mixed  $var Any Object to dump
+     * @param mixed $var Any Object to dump
      *
      * @return true
      */
     public static function ddd($var): bool
     {
         return self::warning('<PRE>'.print_r($var, true).'</PRE>');
-    }  
-    
+    }
 }

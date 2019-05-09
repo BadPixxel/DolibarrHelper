@@ -21,33 +21,33 @@ namespace BadPixxel\Dolibarr\Models;
 abstract class AbstractHelper implements HelperInterface
 {
     /**
+     * Helper Html Buffer
+     *
      * @var string
      */
-    static $helperName = null;
+    protected $buffer;
 
     /**
      * @var string
      */
-    static $helperDesc = null;
-    
-    
+    protected static $helperName = null;
+
     /**
-     * Helper Html Buffer
-     * 
      * @var string
      */
-    protected $buffer = null;
-    
+    protected static $helperDesc = null;
+
     /**
      * {@inheritdoc}
      */
     public function getName(): string
     {
-        if(!empty(static::$helperName)) {
+        if (!empty(static::$helperName)) {
             return static::$helperName;
         }
-        
+
         $obj = new \ReflectionClass($this);
+
         return DOL_HELPER_CODE." - ".pathinfo((string) $obj->getFileName(), PATHINFO_FILENAME);
     }
 
@@ -56,10 +56,10 @@ abstract class AbstractHelper implements HelperInterface
      */
     public function getDesc(): string
     {
-        if(!empty(static::$helperDesc)) {
+        if (!empty(static::$helperDesc)) {
             return static::$helperDesc;
         }
-        
+
         $obj = new \ReflectionClass($this);
 
         return DOL_HELPER_NAME." - ".pathinfo((string) $obj->getFileName(), PATHINFO_FILENAME);
