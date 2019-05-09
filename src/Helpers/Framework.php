@@ -30,7 +30,7 @@ class Framework extends AbstractHelper
     private $rootPath;
 
     /**
-     * Detect Main Include File Path to Boot Dolibarr Envirenement
+     * Detect Main Include File Path to Boot Dolibarr Environement
      *
      * @SuppressWarnings(PHPMD.ExitExpression)
      */
@@ -49,6 +49,31 @@ class Framework extends AbstractHelper
         return $rootPath."/main.inc.php";
     }
 
+    /**
+     * Detect Master Include File and Boot Dolibarr Environement for Scripting
+     *
+     * @SuppressWarnings(PHPMD.ExitExpression)
+     */
+    public function boot(): void
+    {
+        /** @codingStandardsIgnoreStart */
+        global $db, $langs, $conf, $user, $hookmanager, $dolibarr_main_url_root;
+        /** @codingStandardsIgnoreEnd */        
+        
+        //====================================================================//
+        // Try Root Path Detection
+        $rootPath = $this->getRootPath();
+        //====================================================================//
+        // Path detection Failled
+        if ((null === $rootPath) || (!is_file($rootPath."/master.inc.php"))) {
+            die("Detction of master.inc.php fails");
+        }
+        //====================================================================//
+        // Boot Dolibarr
+        include_once($rootPath."/master.inc.php");        
+        include_once DOL_DOCUMENT_ROOT .'/core/lib/functions.lib.php';
+    }
+    
     /**
      * Search for Dolibarr Root Folder in upper folders
      *
@@ -73,9 +98,9 @@ class Framework extends AbstractHelper
         //====================================================================//
         // Always Start From Folder Above this module
         $rootPath = __DIR__;
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < 2; $i++) {
             $rootPath = dirname($rootPath);
-        }
+        }       
         //====================================================================//
         // Search for Dolibarr Root Folder
         for ($i = 0; $i < $maxLevels; $i++) {

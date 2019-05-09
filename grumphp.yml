@@ -91,7 +91,8 @@ parameters:
                 
         phpcpd: 
             exclude:        
-                - "vendor"               
+                - "vendor"    
+                
         phpstan: 
             level:          "%level%"
             configuration:  "%core_dir%/phpstan.neon"
