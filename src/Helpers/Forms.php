@@ -107,10 +107,10 @@ class Forms extends AbstractHelper
     /**
      * Return Yes/No Form Switch
      *
-     * @param string          $name    Parameter Name
-     * @param bool|int|string $state   Current Parameter Value (0/1)
-     * @param array           $query   Query Parameter
-     * @param array           $attr    Display Attributes
+     * @param string          $name  Parameter Name
+     * @param bool|int|string $state Current Parameter Value (0/1)
+     * @param array           $query Query Parameter
+     * @param array           $attr  Display Attributes
      *
      * @return string
      */

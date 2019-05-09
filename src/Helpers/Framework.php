@@ -52,7 +52,10 @@ class Framework extends AbstractHelper
     /**
      * Detect Master Include File and Boot Dolibarr Environement for Scripting
      *
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+     * @SuppressWarnings(PHPMD.CamelCaseVariableName)
      * @SuppressWarnings(PHPMD.ExitExpression)
+     * @SuppressWarnings(PHPMD.LongVariableName)
      */
     public function boot(): void
     {

@@ -163,10 +163,10 @@ class Elements extends AbstractHelper
     /**
      *  Return an image with advanced decoration
      *
-     * @param string     $path       File path
-     * @param string     $title      Image Title
+     * @param string    $path       File path
+     * @param string    $title      Image Title
      * @param nullarray $attr       Display Attributes
-     * @param string     $modulepart Use Dolibar viewimage function as a specific module
+     * @param string    $modulepart Use Dolibar viewimage function as a specific module
      *
      * @return string
      */
