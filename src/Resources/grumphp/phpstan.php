@@ -13,9 +13,12 @@
  * file that was distributed with this source code.
  */
 
+use BadPixxel\Dolibarr\Helper;
+
 //====================================================================//
 // Require Autoloader
-require_once(dirname(__DIR__)."/vendor/autoload.php");
+require_once(dirname(dirname(dirname(__DIR__)))."/vendor/autoload.php");
+
 //====================================================================//
 // Boot Dolibarr
 include_once(Helper::dol()->inc());
