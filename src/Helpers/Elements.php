@@ -170,7 +170,7 @@ class Elements extends AbstractHelper
      *
      * @return string
      */
-    public static function imageWithLink(string $path, string $title, array $attr, string $modulepart = null): string
+    public function imageWithLink(string $path, string $title, array $attr, string $modulepart = null): string
     {
         //====================================================================//
         // Setup of image link with ModulePart management
@@ -315,11 +315,11 @@ class Elements extends AbstractHelper
      *
      * @param int $count Number of lines
      *
-     * @return Html Result
+     * @return string
      *
      * @SuppressWarnings(PHPMD.ShortMethodName)
      */
-    public function br(int $count = 1)
+    public function br(int $count = 1): string
     {
         for ($i = 0; $i < $count; $i++) {
             $this->add("<br />");
@@ -331,13 +331,11 @@ class Elements extends AbstractHelper
     /**
      * Return empty Separator
      *
-     * @param int $count Number of lines
-     *
-     * @return Html Result
+     * @return string
      *
      * @SuppressWarnings(PHPMD.ShortMethodName)
      */
-    public function hr()
+    public function hr(): string
     {
         return $this->add("<hr />")->render();
     }
