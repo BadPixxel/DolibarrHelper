@@ -19,6 +19,12 @@ use BadPixxel\Dolibarr\Helper;
 // Require Autoloader
 require_once(dirname(dirname(dirname(__DIR__)))."/vendor/autoload.php");
 
+/** @codingStandardsIgnoreStart */
+global $db, $langs, $conf, $user, $hookmanager, $dolibarr_main_url_root;
+/** @codingStandardsIgnoreEnd */
+            
 //====================================================================//
 // Boot Dolibarr
-include_once(Helper::dol()->getRootPath()."master.inc.php");
+include_once(Helper::dol()->inc());
+
+//include_once(Helper::dol()->getRootPath()."/master.inc.php");
