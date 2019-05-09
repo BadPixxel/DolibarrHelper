@@ -58,8 +58,8 @@ class Framework extends AbstractHelper
     {
         /** @codingStandardsIgnoreStart */
         global $db, $langs, $conf, $user, $hookmanager, $dolibarr_main_url_root;
-        /** @codingStandardsIgnoreEnd */        
-        
+        /** @codingStandardsIgnoreEnd */
+
         //====================================================================//
         // Try Root Path Detection
         $rootPath = $this->getRootPath();
@@ -70,10 +70,10 @@ class Framework extends AbstractHelper
         }
         //====================================================================//
         // Boot Dolibarr
-        include_once($rootPath."/master.inc.php");        
-        include_once DOL_DOCUMENT_ROOT .'/core/lib/functions.lib.php';
+        include_once($rootPath."/master.inc.php");
+        include_once DOL_DOCUMENT_ROOT.'/core/lib/functions.lib.php';
     }
-    
+
     /**
      * Search for Dolibarr Root Folder in upper folders
      *
@@ -100,7 +100,7 @@ class Framework extends AbstractHelper
         $rootPath = __DIR__;
         for ($i = 0; $i < 2; $i++) {
             $rootPath = dirname($rootPath);
-        }       
+        }
         //====================================================================//
         // Search for Dolibarr Root Folder
         for ($i = 0; $i < $maxLevels; $i++) {
