@@ -21,4 +21,4 @@ require_once(dirname(dirname(dirname(__DIR__)))."/vendor/autoload.php");
 
 //====================================================================//
 // Boot Dolibarr
-include_once(Helper::dol()->inc());
+include_once(Helper::dol()->getRootPath()."master.inc.php");
