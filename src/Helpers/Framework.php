@@ -187,7 +187,7 @@ class Framework extends AbstractHelper
         }
         //====================================================================//
         // Try to detect File Url
-        $relPath = explode((string) $this->getRootPath(), realpath($path));
+        $relPath = explode((string) $this->getRootPath(), (string) realpath($path));
         if (!is_array($relPath) || !isset($relPath[1])) {
             return dol_buildpath("theme/eldy/img/warning.png", 1);
         }
@@ -229,11 +229,11 @@ class Framework extends AbstractHelper
         //====================================================================//
         // Display user message
         if ($res) {
-            setEventMessages($langs->trans('RecordSaved'), null, 'mesgs');
+            setEventMessages($langs->trans('RecordSaved'), array(), 'mesgs');
 
             return true;
         }
-        setEventMessages($langs->trans('Error'), null, 'error');
+        setEventMessages($langs->trans('Error'), array(), 'error');
 
         return false;
     }
