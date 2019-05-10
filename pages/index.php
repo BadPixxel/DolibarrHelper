@@ -125,5 +125,4 @@ if (GETPOSTISSET("doDump")) {
 // Render Library Id Card
 Helper::card()->render();
 
-$db->close();
 llxFooter();

@@ -176,7 +176,7 @@ class Framework extends AbstractHelper
      *
      * @param string $path
      *
-     * @return null|string
+     * @return string
      */
     public function pathToUrl(string $path): string
     {

@@ -97,7 +97,7 @@ parameters:
             level:          "%level%"
             configuration:  "%core_dir%/phpstan.neon"
             ignore_patterns:
-                - server.inc.php
+                - pages/index.php
 
     #############################################        
     #   Testsuites Configs
