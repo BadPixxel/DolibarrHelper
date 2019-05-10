@@ -23,23 +23,23 @@
 matrix:
     include:
 
-#        # Dolibarr Develop Branch       
-#        - php: 7.3
-#          env: DOL=develop
-#        - php: 7.1
-#          env: DOL=develop    
+        # Dolibarr Develop Branch       
+        - php: 7.3
+          env: DOL=develop
+        - php: 7.1
+          env: DOL=develop    
 
         # Dolibarr V9.0 Branch       
         - php: 7.2
           env: DOL=9.0
-#        - php: 7.1
-#          env: DOL=9.0     
+        - php: 7.1
+          env: DOL=9.0     
 
-#        # Dolibarr V8.0 Branch       
-#        - php: 7.2
-#          env: DOL=8.0
-#        - php: 7.1
-#          env: DOL=8.0
+        # Dolibarr V8.0 Branch       
+        - php: 7.2
+          env: DOL=8.0
+        - php: 7.1
+          env: DOL=8.0
         
           
     allow_failures:
