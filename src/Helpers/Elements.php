@@ -55,7 +55,7 @@ class Elements extends AbstractHelper
     /**
      * Return an Icon display from Dolibarr Current Theme
      *
-     * @param string $fileXX Icon filename
+     * @param type $file Icon filename
      *
      * @return string
      */
