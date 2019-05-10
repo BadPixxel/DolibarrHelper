@@ -18,6 +18,11 @@ use BadPixxel\Dolibarr\Helper;
 //====================================================================//
 // Require Autoloader
 require_once(dirname(dirname(dirname(__DIR__)))."/vendor/autoload.php");
+
+//====================================================================//
+// Do not create database handler $db
+define('NOREQUIREDB','1');					
+
 //====================================================================//
 // Boot Dolibarr (Master Only)
 Helper::dol()->boot();
