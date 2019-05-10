@@ -30,6 +30,14 @@ class Framework extends AbstractHelper
     private $rootPath;
 
     /**
+     * Class Constructor
+     */
+    public function __construct()
+    {
+        dol_include_once("/core/lib/admin.lib.php");
+    }
+
+    /**
      * Detect Main Include File Path to Boot Dolibarr Environement
      *
      * @SuppressWarnings(PHPMD.ExitExpression)
