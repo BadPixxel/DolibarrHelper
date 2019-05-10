@@ -79,7 +79,7 @@ class TableForms extends Tables
                 : $langs->trans($text);
         //====================================================================//
         //  Prepare Switch
-        $switch = Helper::forms()->switch($name, $current, array("action" => $action));
+        $switch = Helper::forms()->switch($name, (string) $current, array("action" => $action));
         //====================================================================//
         //  Add Row to Table
         $this->row(array($contents, $switch), $attr);
