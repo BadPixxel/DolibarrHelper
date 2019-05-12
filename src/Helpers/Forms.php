@@ -53,10 +53,9 @@ class Forms extends AbstractHelper
 
         return $this->getHtml();
     }
-    
+
     /**
      * Return form end
-     *
      *
      * @return string
      *
@@ -65,7 +64,7 @@ class Forms extends AbstractHelper
     public function close(): string
     {
         return $this->add('</form>')->getHtml();
-    }    
+    }
 
     //====================================================================//
     // Form Fields Outputs
