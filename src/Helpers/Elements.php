@@ -109,6 +109,8 @@ class Elements extends AbstractHelper
      */
     public function absoluteLink(string $url, string $text, array $query = null, array $attr = null): string
     {
+        global $langs;
+
         //====================================================================//
         // Prepare Link Attributes
         $linkAttr = array(
@@ -117,7 +119,7 @@ class Elements extends AbstractHelper
         //====================================================================//
         // Prepare Link Html
         $this->add('<a '.self::attr($linkAttr, $attr).'>');
-        $this->add($text);
+        $this->add($langs->trans($text));
         $this->add('</a>');
         //====================================================================//
         // Return Link Html

@@ -49,14 +49,14 @@ class TableForms extends Tables
      * Display a 2 Column table line with Complete Switch
      * No Need to Catch Changes, Already Done here
      *
-     * @param string $name    Name of a FGlobal Parameter
-     * @param string $text    Parameter Description Text
-     * @param string $tooltip Tooltip Description Text
-     * @param array  $attr    Display Attributes
+     * @param string      $name    Name of a FGlobal Parameter
+     * @param string      $text    Parameter Description Text
+     * @param null|string $tooltip Tooltip Description Text
+     * @param null|array  $attr    Display Attributes
      *
      * @return $this
      */
-    public function rowConstSwitch(string $name, string $text, string $tooltip, array $attr = array()): self
+    public function rowConstSwitch(string $name, string $text, string $tooltip = null, array $attr = array()): self
     {
         global $langs;
 

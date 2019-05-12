@@ -38,11 +38,11 @@ class Forms extends AbstractHelper
      * @param string $action action Parameter
      * @param array  $param  Hidden Parameters Array
      *
-     * @return $this
+     * @return string
      *
      * @SuppressWarnings(PHPMD.Superglobals)
      */
-    public function new(string $name, string $action, array $param = array()): self
+    public function new(string $name, string $action, array $param = array()): string
     {
         $this->add('<form name="'.$name.'" action="'.Helper::self().'" method="post">');
         $this->input("hidden", "token", $_SESSION['newtoken']);
@@ -51,8 +51,21 @@ class Forms extends AbstractHelper
             $this->input("hidden", $key, $value);
         }
 
-        return $this->render();
+        return $this->getHtml();
     }
+    
+    /**
+     * Return form end
+     *
+     *
+     * @return string
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
+     */
+    public function close(): string
+    {
+        return $this->add('</form>')->getHtml();
+    }    
 
     //====================================================================//
     // Form Fields Outputs

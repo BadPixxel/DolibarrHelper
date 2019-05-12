@@ -86,7 +86,7 @@ class Framework extends AbstractHelper
      *
      * @SuppressWarnings(PHPMD.Superglobals)
      */
-    public function getRootPath(int $maxLevels = 5): ?string
+    public function getRootPath(int $maxLevels = 8): ?string
     {
         //====================================================================//
         // Already Detected ?
