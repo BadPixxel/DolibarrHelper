@@ -20,7 +20,7 @@ use ArrayObject;
 /**
  * Dolibarr Unit Converter
  *
- * @SuppressWarnings(PHPMD.OverallComplexity)
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class Units
 {
