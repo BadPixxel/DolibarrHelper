@@ -22,6 +22,7 @@ use BadPixxel\Dolibarr\Helpers\Framework;
 use BadPixxel\Dolibarr\Helpers\Logger;
 use BadPixxel\Dolibarr\Helpers\TableForms;
 use BadPixxel\Dolibarr\Helpers\Tables;
+use BadPixxel\Dolibarr\Helpers\Units;
 
 /**
  * BadPixxel Dolibarr Helpers Core Access Class
@@ -78,6 +79,13 @@ class Helper
      * @var Logger
      */
     private static $logger;
+
+    /**
+     * Dolibarr Units Helper
+     *
+     * @var Units
+     */
+    private static $units;
 
     /**
      * Return name of this library
@@ -247,6 +255,25 @@ class Helper
         return static::$logger;
     }
 
+    /**
+     * Acces to Units Functions
+     *
+     * @return Units
+     */
+    public static function units(): Units
+    {
+        if (!isset(static::$units)) {
+            //====================================================================//
+            //  Ensure Helper Init
+            self::init();
+            //====================================================================//
+            //  Load Units Helper
+            static::$units = new Units();
+        }
+
+        return static::$units;
+    }
+    
     //====================================================================//
     //  Fastlane Actions
     //====================================================================//
