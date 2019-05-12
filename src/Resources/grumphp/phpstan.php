@@ -31,3 +31,4 @@ Helper::dol()->boot();
 // Include Dolibarr Libs (dol_include_once not working with PhpStan)
 dol_include_once("/core/lib/admin.lib.php");
 dol_include_once('/core/class/html.form.class.php');
+dol_include_once('/core/lib/product.lib.php');

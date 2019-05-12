@@ -52,7 +52,7 @@ class TableForms extends Tables
      * @param string      $name    Name of a FGlobal Parameter
      * @param string      $text    Parameter Description Text
      * @param null|string $tooltip Tooltip Description Text
-     * @param null|array  $attr    Display Attributes
+     * @param array       $attr    Display Attributes
      *
      * @return $this
      */
