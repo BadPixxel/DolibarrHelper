@@ -19,6 +19,8 @@ use ArrayObject;
 
 /**
  * Dolibarr Unit Converter
+ * 
+ * @SuppressWarnings(PHPMD.OverallComplexity) 
  */
 class Units
 {
