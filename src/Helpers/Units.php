@@ -20,7 +20,7 @@ use ArrayObject;
 /**
  * Dolibarr Unit Converter
  */
-trait UnitConverterTrait
+class Units
 {
     /**
      * Convert Weight form all units to kg.
