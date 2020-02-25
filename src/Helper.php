@@ -291,6 +291,18 @@ class Helper
     }
 
     /**
+     * Safe Check if A Global Parameter is Not Empty
+     *
+     * @param string $key Global Parameter Key
+     *
+     * @return bool
+     */
+    public static function isConst(string $key): bool
+    {
+        return !empty(self::dol()->getConst($key));
+    }
+
+    /**
      * Safe Get of A Dolibarr Path Url
      *
      * @param string $relativePath Relitive Uri Path
