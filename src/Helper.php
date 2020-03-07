@@ -338,6 +338,8 @@ class Helper
 
     /**
      * Init the Helper
+     *
+     * @return void
      */
     private static function init()
     {
