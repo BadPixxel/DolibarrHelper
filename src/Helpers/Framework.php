@@ -273,4 +273,46 @@ class Framework extends AbstractHelper
     {
         return $_SERVER["PHP_SELF"];
     }
+
+    /**
+     * Compare Dolibarr version is lower/greater then version given.
+     *
+     * @param string $version Dolibarr Version to compare (ie : 3.3.3)
+     *
+     * @return int -1 if given version is lower then current version
+     *             0 if given version is egal to current version
+     *             1 if given version is above current version
+     *
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
+    public static function dolVersionCmp($version)
+    {
+        $current = explode('.', DOL_VERSION);
+        $cmp = explode('.', $version);
+
+        if (($current["0"] == $cmp ["0"]) && ($current["1"] == $cmp ["1"]) && ($current["2"] == $cmp ["2"])) {
+            return 0;
+        }
+        if (($current["0"] > $cmp ["0"])) {
+            return 1;
+        }
+        if (($current["0"] < $cmp ["0"])) {
+            return -1;
+        }
+        if (($current["1"] > $cmp ["1"])) {
+            return 1;
+        }
+        if (($current["1"] < $cmp ["1"])) {
+            return -1;
+        }
+        if (($current["2"] > $cmp ["2"])) {
+            return 1;
+        }
+        if (($current["2"] < $cmp ["2"])) {
+            return -1;
+        }
+
+        return 0;
+    }
 }
