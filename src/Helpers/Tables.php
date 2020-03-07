@@ -227,11 +227,14 @@ class Tables extends AbstractHelper
     private function cell(string $contents, array $attr = null)
     {
         global $langs;
+
         //  Start Table
         $this->add("<td ".self::attr(array(), $attr).">");
         //  Add Cells Contents
         $this->add($langs->trans($contents));
         //  Close Table Cell
         $this->add("</td>");
+
+        return $this;
     }
 }
