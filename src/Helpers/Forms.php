@@ -3,7 +3,7 @@
 /*
  * This file is part of BadPixxel Dolibarr Helper Library.
  *
- * Copyright (C) 2015-2019 BadPixxel  <www.badpixxel.com>
+ * Copyright (C) 2015-2020 BadPixxel  <www.badpixxel.com>
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of

@@ -16,7 +16,7 @@
 $header = <<<'EOF'
 This file is part of BadPixxel Dolibarr Helper Library.
 
-Copyright (C) 2015-2019 BadPixxel  <www.badpixxel.com>
+Copyright (C) 2015-2020 BadPixxel  <www.badpixxel.com>
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -92,7 +92,7 @@ $config = PhpCsFixer\Config::create()
         'phpdoc_separation' => true,
         'phpdoc_trim_consecutive_blank_line_separation' => true,
         'phpdoc_types_order' => true,
-        'phpdoc_no_empty_return' => true,
+        'phpdoc_no_empty_return' => false,
         'phpdoc_trim' => true,
         'return_assignment' => true,
         'semicolon_after_instruction' => true,
