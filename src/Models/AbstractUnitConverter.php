@@ -130,7 +130,7 @@ abstract class AbstractUnitConverter
         $sql .= " FROM ".MAIN_DB_PREFIX."c_units as t WHERE t.active=1";
         $resql = $db->query($sql);
         if (!$resql) {
-            return Helper::log()->err($db->lasterror());
+            return Helper::log()->error($db->lasterror());
         }
         //====================================================================//
         // Parse Dictionnary to Cache
