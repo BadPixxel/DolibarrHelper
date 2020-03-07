@@ -21,7 +21,7 @@ parameters:
     #############################################        
     core_dir:       "./src/Resources/grumphp"     
     mode:           "module"
-    level:          7
+    level:          8
     
     #############################################        
     #   Base Configs 

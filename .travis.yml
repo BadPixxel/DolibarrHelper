@@ -88,7 +88,11 @@ script:
     # With PHP > 7.1 => Execute CsFixer
     - if [[ ${TRAVIS_PHP_VERSION:0:3} > "7.1" ]]; then php ./vendor/bin/grumphp run --testsuite=csfixer; fi    
     # With PHP > 7.1 => Execute Phpstan 
-    - if [[ ${TRAVIS_PHP_VERSION:0:3} > "7.1" ]]; then php ./vendor/bin/grumphp run --testsuite=phpstan; fi      
+    - if [[ ${TRAVIS_PHP_VERSION:0:3} > "7.1" ]]; then php ./vendor/bin/grumphp run --testsuite=phpstan; fi  
+    # Execute PhpUnit Tests 
+    - php vendor/bin/phpunit
+    
+    
 
 # Tell Travis CI we're using PHP
 language: php
