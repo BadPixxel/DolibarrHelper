@@ -68,7 +68,7 @@ class SurfaceConverter extends AbstractUnitConverter
         if ($surface >= 1E3) {
             $result = new Metric(
                 UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_KM2),
-                static::getDolUnitId("surface", "3"),
+                static::getDolUnitId("surface", 3),
                 $surface
             );
         //====================================================================//
@@ -76,7 +76,7 @@ class SurfaceConverter extends AbstractUnitConverter
         } elseif ($surface >= 1) {
             $result = new Metric(
                 UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_M2),
-                static::getDolUnitId("surface", "0"),
+                static::getDolUnitId("surface", 0),
                 $surface
             );
         //====================================================================//
@@ -84,7 +84,7 @@ class SurfaceConverter extends AbstractUnitConverter
         } elseif ($surface >= 1e-2) {
             $result = new Metric(
                 UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_DM2),
-                static::getDolUnitId("surface", "-2"),
+                static::getDolUnitId("surface", -2),
                 $surface
             );
         //====================================================================//
@@ -92,15 +92,15 @@ class SurfaceConverter extends AbstractUnitConverter
         } elseif ($surface >= 1e-4) {
             $result = new Metric(
                 UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_CM2),
-                static::getDolUnitId("surface", "-4"),
+                static::getDolUnitId("surface", -4),
                 $surface
             );
         //====================================================================//
         // Surface - MilliMeter 2
-        } elseif ($surface >= 1e-6) {
+        } else {
             $result = new Metric(
                 UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_MM2),
-                static::getDolUnitId("surface", "-6"),
+                static::getDolUnitId("surface", -6),
                 $surface
             );
         }

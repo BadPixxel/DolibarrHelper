@@ -73,11 +73,11 @@ abstract class AbstractUnitConverter
      * Identify Dolibarr Unit from Scale.
      *
      * @param string $type
-     * @param string $scale
+     * @param int    $scale
      *
-     * @return int|string
+     * @return int
      */
-    protected static function getDolUnitId(string $type, string $scale)
+    protected static function getDolUnitId(string $type, int $scale)
     {
         //====================================================================//
         // BEFORE V10 => Dolibarr Unit Code Stored in Object
@@ -99,7 +99,7 @@ abstract class AbstractUnitConverter
                 continue;
             }
 
-            return $cUnit->id;
+            return (int) $cUnit->id;
         }
 
         return 0;

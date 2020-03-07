@@ -68,7 +68,7 @@ class LengthConverter extends AbstractUnitConverter
         if ($length >= 1E3) {
             $result = new Metric(
                 UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_KM),
-                static::getDolUnitId("size", "3"),
+                static::getDolUnitId("size", 3),
                 $length
             );
         //====================================================================//
@@ -76,7 +76,7 @@ class LengthConverter extends AbstractUnitConverter
         } elseif ($length >= 1) {
             $result = new Metric(
                 UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_M),
-                static::getDolUnitId("size", "0"),
+                static::getDolUnitId("size", 0),
                 $length
             );
         //====================================================================//
@@ -84,7 +84,7 @@ class LengthConverter extends AbstractUnitConverter
         } elseif ($length >= 1e-1) {
             $result = new Metric(
                 UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_DM),
-                static::getDolUnitId("size", "-1"),
+                static::getDolUnitId("size", -1),
                 $length
             );
         //====================================================================//
@@ -92,7 +92,7 @@ class LengthConverter extends AbstractUnitConverter
         } elseif ($length >= 1e-2) {
             $result = new Metric(
                 UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_CM),
-                static::getDolUnitId("size", "-2"),
+                static::getDolUnitId("size", -2),
                 $length
             );
         //====================================================================//
@@ -100,7 +100,7 @@ class LengthConverter extends AbstractUnitConverter
         } else {
             $result = new Metric(
                 UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_MM),
-                static::getDolUnitId("size", "-3"),
+                static::getDolUnitId("size", -3),
                 $length
             );
         }

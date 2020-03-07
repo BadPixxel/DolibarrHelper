@@ -68,7 +68,7 @@ class WeightConverter extends AbstractUnitConverter
         if ($weight >= 1e3) {
             $result = new Metric(
                 UnitConverter::convertWeight((float) $weight, UnitConverter::MASS_TONNE),
-                static::getDolUnitId("weight", "3"),
+                static::getDolUnitId("weight", 3),
                 $weight
             );
         //====================================================================//
@@ -76,7 +76,7 @@ class WeightConverter extends AbstractUnitConverter
         } elseif ($weight >= 1) {
             $result = new Metric(
                 UnitConverter::convertWeight((float) $weight, UnitConverter::MASS_KILOGRAM),
-                static::getDolUnitId("weight", "0"),
+                static::getDolUnitId("weight", 0),
                 $weight
             );
         //====================================================================//
@@ -84,7 +84,7 @@ class WeightConverter extends AbstractUnitConverter
         } elseif ($weight >= 1e-3) {
             $result = new Metric(
                 UnitConverter::convertWeight((float) $weight, UnitConverter::MASS_GRAM),
-                static::getDolUnitId("weight", "-3"),
+                static::getDolUnitId("weight", -3),
                 $weight
             );
         //====================================================================//
@@ -92,7 +92,7 @@ class WeightConverter extends AbstractUnitConverter
         } else {
             $result = new Metric(
                 UnitConverter::convertWeight((float) $weight, UnitConverter::MASS_MILLIGRAM),
-                static::getDolUnitId("weight", "-6"),
+                static::getDolUnitId("weight", -6),
                 $weight
             );
         }
