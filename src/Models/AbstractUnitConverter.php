@@ -43,9 +43,9 @@ abstract class AbstractUnitConverter
      * @param string $unit     Raw Unit Code or Database Id
      * @param float  $fallBack FallBack Splash Unit Code
      *
-     * @return float Splash Unit Factor
+     * @return float Unit Factor
      */
-    protected static function detectUnit($unit, $fallBack)
+    protected static function detectUnit(string $unit, float $fallBack)
     {
         //====================================================================//
         // BEFORE V10 => Dolibarr Unit Code Stored in Object
@@ -62,8 +62,8 @@ abstract class AbstractUnitConverter
         if (!static::loadDolUnits() || !isset(static::$dico[$unit])) {
             return $fallBack;
         }
-        if (isset(static::$knowUnits[$type][static::$dico[$unit]->scale])) {
-            return static::$knowUnits[$type][static::$dico[$unit]->scale];
+        if (isset(static::$knowUnits[static::$dico[$unit]->scale])) {
+            return static::$knowUnits[static::$dico[$unit]->scale];
         }
 
         return $fallBack;
