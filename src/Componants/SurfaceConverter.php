@@ -66,49 +66,41 @@ class SurfaceConverter extends AbstractUnitConverter
         //====================================================================//
         // Surface - KiloMeter 2
         if ($surface >= 1E3) {
-            $result = new Metric(
-                UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_KM2),
-                static::getDolUnitId("surface", 3),
-                (float) $surface
-            );
+            $factor = UnitConverter::AREA_KM2;
+            $unit = "3";
         //====================================================================//
         // Surface - Meter 2
         } elseif ($surface >= 1) {
-            $result = new Metric(
-                UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_M2),
-                static::getDolUnitId("surface", 0),
-                (float) $surface
-            );
+            $factor = UnitConverter::AREA_M2;
+            $unit = "0";
         //====================================================================//
         // Surface - DecaMeter 2
         } elseif ($surface >= 1e-2) {
-            $result = new Metric(
-                UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_DM2),
-                static::getDolUnitId("surface", -2),
-                (float) $surface
-            );
+            $factor = UnitConverter::AREA_DM2;
+            $unit = "-2";
         //====================================================================//
         // Surface - CentiMeter 2
         } elseif ($surface >= 1e-4) {
-            $result = new Metric(
-                UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_CM2),
-                static::getDolUnitId("surface", -4),
-                (float) $surface
-            );
+            $factor = UnitConverter::AREA_CM2;
+            $unit = "-4";
         //====================================================================//
         // Surface - MilliMeter 2
         } else {
-            $result = new Metric(
-                UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_MM2),
-                static::getDolUnitId("surface", -6),
-                (float) $surface
-            );
+            $factor = UnitConverter::AREA_MM2;
+            $unit = "-6";
         }
+        //====================================================================//
+        // Build result
+        $result = new Metric(
+            UnitConverter::convertWeight((float) $surface, $factor),
+            static::getDolUnitId("surface", (int) $unit),
+            (float) $surface
+        );
         //====================================================================//
         // Prepare Value for Display
         if (function_exists("measuring_units_string")) {
             $result->setPrint(
-                $result->getValue()." ".measuring_units_string($result->getUnit(), "surface")
+                $result->getValue()." ".measuring_units_string($unit, "surface")
             );
         }
 
