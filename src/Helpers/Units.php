@@ -19,6 +19,7 @@ use BadPixxel\Dolibarr\Componants\LengthConverter;
 use BadPixxel\Dolibarr\Componants\SurfaceConverter;
 use BadPixxel\Dolibarr\Componants\VolumeConverter;
 use BadPixxel\Dolibarr\Componants\WeightConverter;
+use BadPixxel\Dolibarr\Models\Metric;
 
 /**
  * Dolibarr Unit Converter
