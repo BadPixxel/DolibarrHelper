@@ -13,11 +13,9 @@
  * file that was distributed with this source code.
  */
 
-namespace BadPixxel\Dolibarr\Tests\Componants;
+namespace BadPixxel\Dolibarr\Tests\Helpers;
 
 use BadPixxel\Dolibarr\Componants\SurfaceConverter;
-use BadPixxel\Dolibarr\Models\Metric;
-use BadPixxel\Dolibarr\Tests\Componants\AbstractConverterTest;
 
 /**
  * Helpers Test Suite - Surface Converter Verifications

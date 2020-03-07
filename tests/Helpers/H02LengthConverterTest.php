@@ -13,7 +13,7 @@
  * file that was distributed with this source code.
  */
 
-namespace BadPixxel\Dolibarr\Tests\Componants;
+namespace BadPixxel\Dolibarr\Tests\Helpers;
 
 use BadPixxel\Dolibarr\Componants\LengthConverter;
 
