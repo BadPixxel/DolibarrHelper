@@ -2,5 +2,8 @@ includes:
 	- ../../../vendor/phpstan/phpstan-phpunit/extension.neon
 parameters:
     bootstrap: "./phpstan.php"
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    inferPrivatePropertyTypeFromConstructor: true 
     universalObjectCratesClasses:
             - ArrayObject
