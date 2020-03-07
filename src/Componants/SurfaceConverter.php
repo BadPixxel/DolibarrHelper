@@ -69,7 +69,7 @@ class SurfaceConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_KM2),
                 static::getDolUnitId("surface", 3),
-                $surface
+                (float) $surface
             );
         //====================================================================//
         // Surface - Meter 2
@@ -77,7 +77,7 @@ class SurfaceConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_M2),
                 static::getDolUnitId("surface", 0),
-                $surface
+                (float) $surface
             );
         //====================================================================//
         // Surface - DecaMeter 2
@@ -85,7 +85,7 @@ class SurfaceConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_DM2),
                 static::getDolUnitId("surface", -2),
-                $surface
+                (float) $surface
             );
         //====================================================================//
         // Surface - CentiMeter 2
@@ -93,7 +93,7 @@ class SurfaceConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_CM2),
                 static::getDolUnitId("surface", -4),
-                $surface
+                (float) $surface
             );
         //====================================================================//
         // Surface - MilliMeter 2
@@ -101,7 +101,7 @@ class SurfaceConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertWeight((float) $surface, UnitConverter::AREA_MM2),
                 static::getDolUnitId("surface", -6),
-                $surface
+                (float) $surface
             );
         }
         //====================================================================//

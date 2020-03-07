@@ -69,7 +69,7 @@ class WeightConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertWeight((float) $weight, UnitConverter::MASS_TONNE),
                 static::getDolUnitId("weight", 3),
-                $weight
+                (float) $weight
             );
         //====================================================================//
         // Weight - KiloGram
@@ -77,7 +77,7 @@ class WeightConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertWeight((float) $weight, UnitConverter::MASS_KILOGRAM),
                 static::getDolUnitId("weight", 0),
-                $weight
+                (float) $weight
             );
         //====================================================================//
         // Weight - Gram
@@ -85,7 +85,7 @@ class WeightConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertWeight((float) $weight, UnitConverter::MASS_GRAM),
                 static::getDolUnitId("weight", -3),
-                $weight
+                (float) $weight
             );
         //====================================================================//
         // Weight - MilliGram
@@ -93,7 +93,7 @@ class WeightConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertWeight((float) $weight, UnitConverter::MASS_MILLIGRAM),
                 static::getDolUnitId("weight", -6),
-                $weight
+                (float) $weight
             );
         }
         //====================================================================//

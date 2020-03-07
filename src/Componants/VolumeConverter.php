@@ -71,7 +71,7 @@ class VolumeConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertWeight((float) $volume, UnitConverter::VOLUME_M3),
                 static::getDolUnitId("volume", 0),
-                $volume
+                (float) $volume
             );
         //====================================================================//
         // Volume - DecaMeter 3
@@ -79,7 +79,7 @@ class VolumeConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertWeight((float) $volume, UnitConverter::VOLUME_DM3),
                 static::getDolUnitId("volume", -3),
-                $volume
+                (float) $volume
             );
         //====================================================================//
         // Volume - CentiMeter 3
@@ -87,7 +87,7 @@ class VolumeConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertWeight((float) $volume, UnitConverter::VOLUME_CM3),
                 static::getDolUnitId("volume", -6),
-                $volume
+                (float) $volume
             );
         //====================================================================//
         // Volume - MilliMeter 3
@@ -95,7 +95,7 @@ class VolumeConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertWeight((float) $volume, UnitConverter::VOLUME_MM3),
                 static::getDolUnitId("volume", -9),
-                $volume
+                (float) $volume
             );
         }
         //====================================================================//

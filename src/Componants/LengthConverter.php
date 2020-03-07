@@ -69,7 +69,7 @@ class LengthConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_KM),
                 static::getDolUnitId("size", 3),
-                $length
+                (float) $length
             );
         //====================================================================//
         // Length - Meter
@@ -77,7 +77,7 @@ class LengthConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_M),
                 static::getDolUnitId("size", 0),
-                $length
+                (float) $length
             );
         //====================================================================//
         // Length - DeciMeter
@@ -85,7 +85,7 @@ class LengthConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_DM),
                 static::getDolUnitId("size", -1),
-                $length
+                (float) $length
             );
         //====================================================================//
         // Length - CentiMeter
@@ -93,7 +93,7 @@ class LengthConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_CM),
                 static::getDolUnitId("size", -2),
-                $length
+                (float) $length
             );
         //====================================================================//
         // Length - MilliMeter
@@ -101,7 +101,7 @@ class LengthConverter extends AbstractUnitConverter
             $result = new Metric(
                 UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_MM),
                 static::getDolUnitId("size", -3),
-                $length
+                (float) $length
             );
         }
         //====================================================================//
