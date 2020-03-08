@@ -66,41 +66,36 @@ class WeightConverter extends AbstractUnitConverter
         //====================================================================//
         // Weight - Tonne
         if ($weight >= 1e3) {
-            $result = new Metric(
-                UnitConverter::convertWeight((float) $weight, UnitConverter::MASS_TONNE),
-                static::getDolUnitId("weight", 3),
-                (float) $weight
-            );
+            $factor = UnitConverter::MASS_TONNE;
+            $unit = "3";
         //====================================================================//
         // Weight - KiloGram
         } elseif ($weight >= 1) {
-            $result = new Metric(
-                UnitConverter::convertWeight((float) $weight, UnitConverter::MASS_KILOGRAM),
-                static::getDolUnitId("weight", 0),
-                (float) $weight
-            );
+            $factor = UnitConverter::MASS_KILOGRAM;
+            $unit = "0";
         //====================================================================//
         // Weight - Gram
         } elseif ($weight >= 1e-3) {
-            $result = new Metric(
-                UnitConverter::convertWeight((float) $weight, UnitConverter::MASS_GRAM),
-                static::getDolUnitId("weight", -3),
-                (float) $weight
-            );
+            $factor = UnitConverter::MASS_GRAM;
+            $unit = "-3";
         //====================================================================//
         // Weight - MilliGram
         } else {
-            $result = new Metric(
-                UnitConverter::convertWeight((float) $weight, UnitConverter::MASS_MILLIGRAM),
-                static::getDolUnitId("weight", -6),
-                (float) $weight
-            );
+            $factor = UnitConverter::MASS_MILLIGRAM;
+            $unit = "-6";
         }
+        //====================================================================//
+        // Build result
+        $result = new Metric(
+            UnitConverter::convertWeight((float) $weight, $factor),
+            static::getDolUnitId("weight", (int) $unit),
+            (float) $weight
+        );
         //====================================================================//
         // Prepare Value for Display
         if (function_exists("measuring_units_string")) {
             $result->setPrint(
-                $result->getValue()." ".measuring_units_string($result->getUnit(), "weight")
+                $result->getValue()." ".measuring_units_string($unit, "weight")
             );
         }
 

@@ -66,49 +66,41 @@ class LengthConverter extends AbstractUnitConverter
         //====================================================================//
         // Length - KiloMeter
         if ($length >= 1E3) {
-            $result = new Metric(
-                UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_KM),
-                static::getDolUnitId("size", 3),
-                (float) $length
-            );
+            $factor = UnitConverter::LENGTH_KM;
+            $unit = "3";
         //====================================================================//
         // Length - Meter
         } elseif ($length >= 1) {
-            $result = new Metric(
-                UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_M),
-                static::getDolUnitId("size", 0),
-                (float) $length
-            );
+            $factor = UnitConverter::LENGTH_M;
+            $unit = "0";
         //====================================================================//
         // Length - DeciMeter
         } elseif ($length >= 1e-1) {
-            $result = new Metric(
-                UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_DM),
-                static::getDolUnitId("size", -1),
-                (float) $length
-            );
+            $factor = UnitConverter::LENGTH_DM;
+            $unit = "-1";
         //====================================================================//
         // Length - CentiMeter
         } elseif ($length >= 1e-2) {
-            $result = new Metric(
-                UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_CM),
-                static::getDolUnitId("size", -2),
-                (float) $length
-            );
+            $factor = UnitConverter::LENGTH_CM;
+            $unit = "-2";
         //====================================================================//
         // Length - MilliMeter
         } else {
-            $result = new Metric(
-                UnitConverter::convertLength((float) $length, UnitConverter::LENGTH_MM),
-                static::getDolUnitId("size", -3),
-                (float) $length
-            );
+            $factor = UnitConverter::LENGTH_MM;
+            $unit = "-3";
         }
+        //====================================================================//
+        // Build result
+        $result = new Metric(
+            UnitConverter::convertWeight((float) $length, $factor),
+            static::getDolUnitId("size", (int) $unit),
+            (float) $length
+        );
         //====================================================================//
         // Prepare Value for Display
         if (function_exists("measuring_units_string")) {
             $result->setPrint(
-                $result->getValue()." ".measuring_units_string($result->getUnit(), "size")
+                $result->getValue()." ".measuring_units_string($unit, "size")
             );
         }
 

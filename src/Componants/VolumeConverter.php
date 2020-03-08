@@ -68,41 +68,36 @@ class VolumeConverter extends AbstractUnitConverter
         //====================================================================//
         // Volume - Meter 3
         if ($volume >= 1) {
-            $result = new Metric(
-                UnitConverter::convertWeight((float) $volume, UnitConverter::VOLUME_M3),
-                static::getDolUnitId("volume", 0),
-                (float) $volume
-            );
+            $factor = UnitConverter::VOLUME_M3;
+            $unit = "0";
         //====================================================================//
         // Volume - DecaMeter 3
         } elseif ($volume >= 1e-3) {
-            $result = new Metric(
-                UnitConverter::convertWeight((float) $volume, UnitConverter::VOLUME_DM3),
-                static::getDolUnitId("volume", -3),
-                (float) $volume
-            );
+            $factor = UnitConverter::VOLUME_DM3;
+            $unit = "-3";
         //====================================================================//
         // Volume - CentiMeter 3
         } elseif ($volume >= 1e-6) {
-            $result = new Metric(
-                UnitConverter::convertWeight((float) $volume, UnitConverter::VOLUME_CM3),
-                static::getDolUnitId("volume", -6),
-                (float) $volume
-            );
+            $factor = UnitConverter::VOLUME_CM3;
+            $unit = "-6";
         //====================================================================//
         // Volume - MilliMeter 3
         } else {
-            $result = new Metric(
-                UnitConverter::convertWeight((float) $volume, UnitConverter::VOLUME_MM3),
-                static::getDolUnitId("volume", -9),
-                (float) $volume
-            );
+            $factor = UnitConverter::VOLUME_MM3;
+            $unit = "-9";
         }
+        //====================================================================//
+        // Build result
+        $result = new Metric(
+            UnitConverter::convertWeight((float) $volume, $factor),
+            static::getDolUnitId("volume", (int) $unit),
+            (float) $volume
+        );
         //====================================================================//
         // Prepare Value for Display
         if (function_exists("measuring_units_string")) {
             $result->setPrint(
-                $result->getValue()." ".measuring_units_string($result->getUnit(), "volume")
+                $result->getValue()." ".measuring_units_string($unit, "volume")
             );
         }
 
