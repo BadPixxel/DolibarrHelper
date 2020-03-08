@@ -29,6 +29,18 @@ matrix:
         - php: 7.1
           env: DOL=develop    
 
+        # Dolibarr V11.0 Branch       
+        - php: 7.3
+          env: DOL=11.0
+        - php: 7.1
+          env: DOL=11.0     
+          
+        # Dolibarr V10.0 Branch       
+        - php: 7.3
+          env: DOL=10.0
+        - php: 7.1
+          env: DOL=10.0     
+          
         # Dolibarr V9.0 Branch       
         - php: 7.2
           env: DOL=9.0
