@@ -25,5 +25,5 @@ define('DOL_HELPER_AUTHOR', "BadPixxel - B. Paquier");
 define('DOL_HELPER_LOG_PREFIX', "BadPixxel Helper: ");
 
 if (!defined('DOL_HELPER_DEBUG')) {
-    define('DOL_HELPER_DEBUG', true);
+    define('DOL_HELPER_DEBUG', false);
 }
