@@ -48,17 +48,16 @@ abstract class AbstractUnitConverter
     protected static function detectUnit(string $unit, float $fallBack)
     {
         //====================================================================//
-        // BEFORE V10 => Dolibarr Unit Code Stored in Object
-        if (Framework::dolVersionCmp("10.0.0") < 0) {
+        // STANDARD => Dolibarr Unit Scale Factored Stored in Objects
+        if (!self::useDatabaseUnitsIds()) {
             if (isset(static::$knowUnits[$unit])) {
                 return static::$knowUnits[$unit];
             }
 
             return $fallBack;
         }
-
         //====================================================================//
-        // SINCE V10 => Dolibarr Unit Code Stored in Dictionnary
+        // V10.0.0 to V10.0.2 => Dolibarr Unit IDs Stored in Object
         if (!static::loadDolUnits() || !isset(static::$dico[$unit])) {
             return $fallBack;
         }
@@ -80,12 +79,12 @@ abstract class AbstractUnitConverter
     protected static function getDolUnitId(string $type, int $scale)
     {
         //====================================================================//
-        // BEFORE V10 => Dolibarr Unit Code Stored in Object
-        if (Framework::dolVersionCmp("10.0.0") < 0) {
+        // STANDARD => Dolibarr Unit Scale Factored Stored in Objects
+        if (!self::useDatabaseUnitsIds()) {
             return $scale;
         }
         //====================================================================//
-        // SINCE V10 => Dolibarr Unit Code Stored in Dictionnary
+        // V10.0.0 to V10.0.2 => Dolibarr Unit IDs Stored in Object
         if (!static::loadDolUnits()) {
             return 0;
         }
@@ -114,8 +113,8 @@ abstract class AbstractUnitConverter
     {
         global $db;
         //====================================================================//
-        // BEFORE V10 => Dolibarr Unit Code Stored in Object
-        if (Framework::dolVersionCmp("10.0.0") < 0) {
+        // STANDARD => Dolibarr Unit Scale Factored Stored in Objects
+        if (!self::useDatabaseUnitsIds()) {
             return true;
         }
         //====================================================================//
@@ -141,6 +140,25 @@ abstract class AbstractUnitConverter
             }
         }
         $db->free($resql);
+
+        return true;
+    }
+
+    /**
+     * Detect if Stored Units are Scales or Database Dictionary IDs.
+     *
+     * V10.0.0 to V10.0.2 => Dolibarr Unit IDs Stored in Objects
+     *
+     * @return bool TRUE if Database
+     */
+    private static function useDatabaseUnitsIds(): bool
+    {
+        if (Framework::dolVersionCmp("10.0.0") < 0) {
+            return false;
+        }
+        if (Framework::dolVersionCmp("10.0.2") > 0) {
+            return false;
+        }
 
         return true;
     }
