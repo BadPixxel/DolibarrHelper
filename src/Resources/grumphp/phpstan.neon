@@ -8,4 +8,4 @@ parameters:
     universalObjectCratesClasses:
             - ArrayObject
     ignoreErrors: 
-        - '#Parameter \\#1 \\$unit of function measuring_units_string expects int, string given.#'
+        - '#Parameter \#1 \$unit of function measuring_units_string expects int, string given.#'
