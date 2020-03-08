@@ -89,7 +89,7 @@ class Metric
         if (abs($this->value - $value) > 1E-3) {
             return false;
         }
-        if ($this->int != $unit) {
+        if ($this->unit != $unit) {
             return false;
         }
 
