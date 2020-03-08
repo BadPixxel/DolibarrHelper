@@ -76,6 +76,26 @@ class Metric
         return $this;
     }
 
+    /**
+     * Compare a Value to this Metric
+     *
+     * @param float $value
+     * @param int   $unit
+     *
+     * @return bool TRUE if Similar
+     */
+    public function compare(float $value, int $unit)
+    {
+        if (abs($this->value - $value) > 1E-3) {
+            return false;
+        }
+        if ($this->int != $unit) {
+            return false;
+        }
+
+        return true;
+    }
+
     //====================================================================//
     // Getters & Setters
     //====================================================================//
