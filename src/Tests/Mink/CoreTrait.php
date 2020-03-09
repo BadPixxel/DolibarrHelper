@@ -112,6 +112,7 @@ trait CoreTrait
         self::assertInstanceOf(Element::class, $indexTitle);
         //====================================================================//
         // On verifie que la config Minimale est faite
+            $this->ensureConfig();
         if (false !== strpos(strtolower($indexTitle->getHtml()), "configuration")) {
             $this->ensureConfig();
         } else {
@@ -198,6 +199,7 @@ trait CoreTrait
         $title = $this->visit('index.php')->find('css', 'title');
         self::assertInstanceOf(Element::class, $title);
 
+        var_dump($this->getSession()->getCurrentUrl());
         var_dump(strtolower($title->getHtml()));
 
         self::assertContains('accueil', strtolower($title->getHtml()));
