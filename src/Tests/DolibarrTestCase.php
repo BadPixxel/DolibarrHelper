@@ -55,7 +55,7 @@ class DolibarrTestCase extends TestCase
     public function testBootDolibarr(): void
     {
         global $db,$langs,$conf,$user,$hookmanager, $dolibarr_main_url_root;
-
+        
         $this->assertNotEmpty($db);
         $this->assertNotEmpty($langs);
         $this->assertNotEmpty($conf);

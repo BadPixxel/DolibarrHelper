@@ -198,10 +198,6 @@ trait CoreTrait
         // On verifie
         $title = $this->visit('index.php')->find('css', 'title');
         self::assertInstanceOf(Element::class, $title);
-
-        var_dump($this->getSession()->getCurrentUrl());
-        var_dump(strtolower($title->getHtml()));
-
         self::assertContains('accueil', strtolower($title->getHtml()));
     }
 

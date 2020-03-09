@@ -138,7 +138,6 @@ class CoreActions
      */
     public static function setParameter(string $key, string $value)
     {
-        global $db, $conf;
-        dolibarr_set_const($db, $key, $value, 'chaine', 0, '', $conf->entity);
+        Helper::dol()->setConst($key, $value);
     }
 }

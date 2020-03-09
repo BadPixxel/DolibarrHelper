@@ -223,6 +223,7 @@ class Framework extends AbstractHelper
     {
         global $db, $conf, $langs;
 
+        include_once DOL_DOCUMENT_ROOT.'/core/lib/admin.lib.php';
         //====================================================================//
         // Update value in Database
         $res = dolibarr_set_const($db, $key, $value, $type, 0, '', $conf->entity);
