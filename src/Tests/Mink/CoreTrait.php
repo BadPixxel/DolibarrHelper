@@ -46,7 +46,7 @@ trait CoreTrait
         // Change Language
         $page->fillField("MAIN_LANG_DEFAULT", $isoLang);
         $btn = $page->findButton('submit');
-        self::assertNotEmpty($btn);
+        $this->assertNotEmpty($btn);
         $btn->click();
     }
     /**
@@ -74,7 +74,9 @@ trait CoreTrait
         // Connect User to Dolibarr
         $this->ensureLogin();
 
-        $this->session->getDriver()->getClient()->followRedirects(true);
+        /** @var GoutteDriver $driver */
+        $driver = $this->session->getDriver();
+        $driver->getClient()->followRedirects(true);
     }
 
     protected function ensureLogin()
