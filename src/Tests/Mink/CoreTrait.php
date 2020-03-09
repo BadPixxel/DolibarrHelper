@@ -18,9 +18,9 @@ namespace BadPixxel\Dolibarr\Tests\Mink;
 use Behat\Mink\Driver\Goutte\Client as GoutteClient;
 use Behat\Mink\Driver\GoutteDriver;
 use Behat\Mink\Element\DocumentElement;
+use Behat\Mink\Element\NodeElement as Element;
 use Behat\Mink\Session;
 use GuzzleHttp\Client as GuzzleClient;
-use Behat\Mink\Element\NodeElement as Element;
 
 /**
  * Core Mink Functions to Access Dolibarr from Browser
@@ -47,7 +47,7 @@ trait CoreTrait
         // Change Language
         $page->fillField("MAIN_LANG_DEFAULT", $isoLang);
         $btn = $page->findButton('submit');
-        $this->assertNotEmpty($btn);
+        self::assertInstanceOf(Element::class, $btn);
         $btn->click();
     }
     /**
@@ -109,7 +109,7 @@ trait CoreTrait
             }
         }
         $indexTitle = $this->visit('index.php')->find('css', 'title');
-        self::assertNotEmpty($indexTitle);
+        self::assertInstanceOf(Element::class, $indexTitle);
         //====================================================================//
         // On verifie que la config Minimale est faite
         if (false === strpos("Configuration", $indexTitle->getHtml())) {
@@ -191,13 +191,12 @@ trait CoreTrait
         $page->fillField("name", "BadPixxel PhpUnit Test");
         $page->fillField("selectcountry_id", 1);
         $btn = $page->findButton('Enregistrer');
-        $this->assertNotEmpty($btn);
+        self::assertInstanceOf(Element::class, $btn);
         $btn->click();
         //====================================================================//
         // On verifie
         $title = $this->visit('index.php')->find('css', 'title');
-        $this->assertNotEmpty($title);
-        $this->assertInstanceOf(Element::class, $title);
+        self::assertInstanceOf(Element::class, $title);
         self::assertContains('accueil', strtolower($title->getHtml()));
     }
 
