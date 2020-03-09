@@ -54,7 +54,7 @@ class DatabaseActions
         global $db;
 
         $db->query("SET FOREIGN_KEY_CHECKS = 0;");
-        if (self::dbHasTable($table)) {
+        if (self::hasTable($table)) {
             $db->DDLDropTable(MAIN_DB_PREFIX.$table);
         }
         $db->query("SET FOREIGN_KEY_CHECKS = 1;");
@@ -75,7 +75,7 @@ class DatabaseActions
     {
         global $db;
 
-        if (!self::dbHasTable($table)) {
+        if (!self::hasTable($table)) {
             return true;
         }
 
