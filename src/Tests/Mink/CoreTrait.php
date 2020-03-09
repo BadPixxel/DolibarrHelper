@@ -194,10 +194,9 @@ trait CoreTrait
         $btn->click();
         //====================================================================//
         // On verifie
-        self::assertContains(
-            'accueil',
-            strtolower($this->visit('index.php')->find('css', 'title')->getHtml())
-        );
+        $title = $this->visit('index.php')->find('css', 'title');
+        $this->assertNotEmpty($title);
+        self::assertContains('accueil', strtolower($title->getHtml()));
     }
 
     /**
