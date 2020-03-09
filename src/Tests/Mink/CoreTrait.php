@@ -79,6 +79,11 @@ trait CoreTrait
         $driver->getClient()->followRedirects(true);
     }
 
+    /**
+     * Ensure User is Logged In
+     *
+     * @return void
+     */
     protected function ensureLogin()
     {
         //====================================================================//
@@ -184,7 +189,9 @@ trait CoreTrait
         // Fill the Form & Go
         $page->fillField("name", "BadPixxel PhpUnit Test");
         $page->fillField("selectcountry_id", 1);
-        $page->findButton('Enregistrer')->click();
+        $btn = $page->findButton('Enregistrer');
+        $this->assertNotEmpty($btn);
+        $btn->click();
         //====================================================================//
         // On verifie
         self::assertContains(
