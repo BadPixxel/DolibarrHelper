@@ -189,7 +189,7 @@ trait CoreTrait
         //====================================================================//
         // Fill the Form & Go
         $page->fillField("name", "BadPixxel PhpUnit Test");
-        $page->fillField("selectcountry_id", 1);
+        $page->fillField("selectcountry_id", "1");
         $btn = $page->findButton('Enregistrer');
         self::assertInstanceOf(Element::class, $btn);
         $btn->click();
