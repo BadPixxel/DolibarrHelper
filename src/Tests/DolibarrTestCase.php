@@ -17,10 +17,7 @@ namespace BadPixxel\Dolibarr\Tests;
 
 use BadPixxel\Dolibarr\Helper;
 use BadPixxel\Dolibarr\Tests\Tools\CoreActions;
-use Conf;
-use DoliDB;
 use PHPUnit\Framework\TestCase;
-use User;
 
 /**
  * Base Test Case for Dolibarr Modules Testing
@@ -60,12 +57,9 @@ class DolibarrTestCase extends TestCase
         global $db,$langs,$conf,$user,$hookmanager, $dolibarr_main_url_root;
 
         $this->assertNotEmpty($db);
-        $this->assertInstanceOf(DoliDB::class, $db);
         $this->assertNotEmpty($langs);
         $this->assertNotEmpty($conf);
-        $this->assertInstanceOf(Conf::class, $conf);
         $this->assertNotEmpty($user);
-        $this->assertInstanceOf(User::class, $user);
         $this->assertNotEmpty($hookmanager);
         $this->assertNotEmpty($dolibarr_main_url_root);
     }
