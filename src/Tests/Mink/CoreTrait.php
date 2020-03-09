@@ -20,6 +20,7 @@ use Behat\Mink\Driver\GoutteDriver;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Session;
 use GuzzleHttp\Client as GuzzleClient;
+use Behat\Mink\Element\NodeElement as Element;
 
 /**
  * Core Mink Functions to Access Dolibarr from Browser
@@ -196,6 +197,7 @@ trait CoreTrait
         // On verifie
         $title = $this->visit('index.php')->find('css', 'title');
         $this->assertNotEmpty($title);
+        $this->assertInstanceOf(Element::class, $title);
         self::assertContains('accueil', strtolower($title->getHtml()));
     }
 
