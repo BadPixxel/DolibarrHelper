@@ -42,7 +42,7 @@ class Framework extends AbstractHelper
         //====================================================================//
         // Path detection Failled
         if ((null === $rootPath) || (!is_file($rootPath."/main.inc.php"))) {
-            die("Detction of main.inc.php fails");
+            die("Detection of main.inc.php fails");
         }
         //====================================================================//
         // Return Path to Dolibarr MainInclude

@@ -159,4 +159,45 @@ class Logger extends AbstractHelper
     {
         return self::warning('<PRE>'.print_r($var, true).'</PRE>');
     }
+
+    /**
+     * Catch Dolibarr Common Objects Errors and Push to Logger
+     *
+     * @param null|object $subject Focus on a specific object
+     *
+     * @return bool False if Error was Found
+     *
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
+    public static function catchDolibarrErrors($subject = null): bool
+    {
+        global $db, $langs;
+        //====================================================================//
+        // Safety Check
+        if (!is_object($subject)) {
+            return true;
+        }
+        $noError = true;
+        //====================================================================//
+        // Catch Database Errors
+        if (isset($subject->error) && !empty($subject->error) && !empty($db->lasterror())) {
+            $noError = self::error(html_entity_decode($db->lasterror()));
+        }
+        //====================================================================//
+        // Simple Error
+        if (isset($subject->error) && !empty($subject->error) && is_scalar($subject->error)) {
+            $noError = self::error(html_entity_decode($langs->trans($subject->error)));
+        }
+        //====================================================================//
+        // Array of Errors
+        if (isset($subject->errors) && is_iterable($subject->errors)) {
+            foreach ($subject->errors as $error) {
+                if (is_scalar($error) && !empty($error)) {
+                    $noError = self::error(html_entity_decode($langs->trans($error)));
+                }
+            }
+        }
+
+        return $noError;
+    }
 }
