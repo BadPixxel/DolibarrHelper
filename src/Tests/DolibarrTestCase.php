@@ -51,6 +51,9 @@ class DolibarrTestCase extends TestCase
      * Verify Booting Dolibarr
      *
      * @return void
+     *
+     * @SuppressWarnings(PHPMD.CamelCaseVariableName)
+     * @SuppressWarnings(PHPMD.LongVariableName)
      */
     public function testBootDolibarr(): void
     {

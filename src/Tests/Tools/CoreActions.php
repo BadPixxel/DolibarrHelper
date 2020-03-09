@@ -86,12 +86,12 @@ class CoreActions
         // Detect Entity Id
         $sql = "SELECT rowid FROM ".MAIN_DB_PREFIX."entity WHERE label = '".DOL_PHPUNIT_ENTITY."'";
         $resql = $db->query($sql);
-        if ($resql) {
-            $row = $db->fetch_row($resql);
-            $entity = $row[0];
-        } else {
-            die("Unable to Select PhpUnit Entity : ".DOL_PHPUNIT_ENTITY);
+        Assert::assertNotEmpty($resql, "Unable to Select PhpUnit Entity : ".DOL_PHPUNIT_ENTITY);
+        if (!$resql) {
+            return false;
         }
+        $row = $db->fetch_row($resql);
+        $entity = $row[0];
         //====================================================================//
         // Switch Entity
         $conf->entity = (int)   $entity;
