@@ -15,6 +15,11 @@
 
 use BadPixxel\Dolibarr\Helper;
 
+define('DOL_PHPUNIT_HOST', "");
+define('DOL_PHPUNIT_USER', "");
+define('DOL_PHPUNIT_PWD', "");
+define('DOL_PHPUNIT_ENTITY', "");
+
 //====================================================================//
 // Require Autoloader
 require_once(dirname(dirname(dirname(__DIR__)))."/vendor/autoload.php");
