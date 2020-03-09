@@ -27,6 +27,11 @@ use GuzzleHttp\Client as GuzzleClient;
 trait CoreTrait
 {
     /**
+     * @var Session 
+     */
+    private $session;
+    
+    /**
      * Setup Dolibarr Default Language
      *
      * @param string $isoLang
