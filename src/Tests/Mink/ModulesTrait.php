@@ -49,7 +49,9 @@ trait ModulesTrait
         // Verify Module was Found
         self::assertInstanceOf(Element::class, $btn);
         self::assertContains('fa-toggle-', $btn->getHtml());
-        if ($btn->find('css', 'span')->hasClass('fa-toggle-off')) {
+        $span = $btn->find('css', 'span');
+        self::assertInstanceOf(Element::class, $span);
+        if ($span->hasClass('fa-toggle-off')) {
             // Enable the module
             $btn->click();
         } else {
