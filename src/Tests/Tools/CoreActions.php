@@ -51,7 +51,7 @@ class CoreActions
         //====================================================================//
         // Load Local User
         $user = new User($db);
-        if (1 != $user->fetch(null, DOL_PHPUNIT_USER)) {
+        if (1 != $user->fetch(0, DOL_PHPUNIT_USER)) {
             return Helper::log()->catchDolibarrErrors($user);
         }
         //====================================================================//
