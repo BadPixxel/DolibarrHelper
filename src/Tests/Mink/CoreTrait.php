@@ -27,10 +27,10 @@ use GuzzleHttp\Client as GuzzleClient;
 trait CoreTrait
 {
     /**
-     * @var Session 
+     * @var Session
      */
     private $session;
-    
+
     /**
      * Setup Dolibarr Default Language
      *
@@ -93,21 +93,23 @@ trait CoreTrait
             // Multicompany ??
             $select = $page->findById('entity');
             if ($select) {
-                $select->selectOption(PHPUNIT\ENTITY);
+                $select->selectOption(DOL_PHPUNIT_ENTITY);
             }
-            if ($page->findButton('Se connecter')) {
-                $page->findButton('Se connecter')->press();
+            $btnLogin = $page->findButton('Se connecter');
+            if ($btnLogin) {
+                $btnLogin->press();
             }
         }
-        $indexTitle = $this->visit('index.php')->find('css', 'title')->getHtml();
+        $indexTitle = $this->visit('index.php')->find('css', 'title');
+        self::assertNotEmpty($indexTitle);
         //====================================================================//
         // On verifie que la config Minimale est faite
-        if (false === strpos("Configuration", $indexTitle)) {
+        if (false === strpos("Configuration", $indexTitle->getHtml())) {
             $this->ensureConfig();
         } else {
             //====================================================================//
             // On verifie
-            self::assertContains('accueil', strtolower($indexTitle));
+            self::assertContains('accueil', strtolower($indexTitle->getHtml()));
         }
     }
 
