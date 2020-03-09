@@ -15,6 +15,8 @@
 
 namespace BadPixxel\Dolibarr\Tests\Mink;
 
+use Behat\Mink\Element\NodeElement as Element;
+
 /**
  * Module Mink Functions to Access Dolibarr from Browser
  */
@@ -27,6 +29,7 @@ trait ModulesTrait
     {
         $page = $this->visit('/admin/modules.php');
         $btn = $page->find('xpath', '//a[contains(@href, "'.$modName.'")]');
+        self::assertInstanceOf(Element::class, $btn);
         //====================================================================//
         // Verify Module was Found
         $this->assertContains(
@@ -44,10 +47,8 @@ trait ModulesTrait
         $btn = $page->find('xpath', '//a[contains(@href, "'.$modName.'")]');
         //====================================================================//
         // Verify Module was Found
-        $this->assertContains(
-            'fa-toggle-',
-            $btn->getHtml()
-        );
+        self::assertInstanceOf(Element::class, $btn);
+        self::assertContains('fa-toggle-', $btn->getHtml());
         if ($btn->find('css', 'span')->hasClass('fa-toggle-off')) {
             // Enable the module
             $btn->click();
@@ -61,9 +62,8 @@ trait ModulesTrait
         $this->getSession()->reload();
         //====================================================================//
         // Verify Module is Marked as Enabled
-        $this->assertContains(
-            'fa-toggle-on',
-            $page->find('xpath', '//a[contains(@href, "'.$modName.'")]')->getHtml()
-        );
+        $reloadBtn = $page->find('xpath', '//a[contains(@href, "'.$modName.'")]');
+        self::assertInstanceOf(Element::class, $reloadBtn);
+        self::assertContains('fa-toggle-on', $reloadBtn->getHtml());
     }
 }
