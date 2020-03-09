@@ -122,7 +122,10 @@ trait CoreTrait
     {
         $args = array();
 
-        parse_str(parse_url($this->getSession()->getCurrentUrl(), PHP_URL_QUERY), $args);
+        parse_str(
+            (string) parse_url($this->getSession()->getCurrentUrl(), PHP_URL_QUERY),
+            $args
+        );
 
         return $args;
     }
@@ -143,6 +146,8 @@ trait CoreTrait
 
     /**
      * Asert Page is Loaded
+     *
+     * @return void
      */
     protected function assertPageIsLoaded(): void
     {
@@ -165,6 +170,8 @@ trait CoreTrait
 
     /**
      * Ensure Minimal Dolibarr Configuration is Done
+     *
+     * @return void
      */
     private function ensureConfig()
     {
