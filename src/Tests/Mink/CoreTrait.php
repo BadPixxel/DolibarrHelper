@@ -40,7 +40,9 @@ trait CoreTrait
         //====================================================================//
         // Change Language
         $page->fillField("MAIN_LANG_DEFAULT", $isoLang);
-        $page->findButton('submit')->click();
+        $btn = $page->findButton('submit');
+        self::assertNotEmpty($btn);
+        $btn->click();
     }
     /**
      * Get Current User Session
