@@ -16,9 +16,10 @@
 namespace BadPixxel\Dolibarr\Tests\Tools;
 
 use DoliDB;
+use PHPUnit\Framework\Assert;
 
 /**
- * @abstract    Execute Multiple Dolibarr Raw Actions
+ * Execute Multiple Dolibarr Raw Actions
  */
 class DatabaseActions
 {
@@ -49,7 +50,7 @@ class DatabaseActions
      *
      * @return bool
      */
-    public static function dbDeleteTable(string $table) : bool
+    public static function deleteTable(string $table) : bool
     {
         global $db;
 
@@ -71,7 +72,7 @@ class DatabaseActions
      *
      * @return bool
      */
-    public static function dbTruncateTable(string $table) : bool
+    public static function truncateTable(string $table) : bool
     {
         global $db;
 
@@ -89,5 +90,41 @@ class DatabaseActions
         $db->query("SET FOREIGN_KEY_CHECKS = 1;");
 
         return true;
+    }
+
+    /**
+     * Check Db Table has Field
+     *
+     * @global DoliDB $db
+     *
+     * @param string $table
+     * @param string $field
+     * @param string $format
+     *
+     * @return void
+     */
+    public static function hasField(string $table, string $field, string $format = null)
+    {
+        global $db;
+        //====================================================================//
+        // Ensure Table Exists
+        Assert::assertTrue(self::hasTable($table));
+        //====================================================================//
+        // Load List of Table Fields
+        $tableInfos = $db->DDLInfoTable(MAIN_DB_PREFIX.$table);
+        //====================================================================//
+        // Search Field
+        $tableField = null;
+        foreach ($tableInfos as $fieldInfos) {
+            if ($fieldInfos[0] == $field) {
+                $tableField = $fieldInfos;
+            }
+        }
+        Assert::assertIsArray($tableField);
+        //====================================================================//
+        // Verify Field Format
+        if ($format) {
+            Assert::assertEquals($format, $tableField[1]);
+        }
     }
 }
