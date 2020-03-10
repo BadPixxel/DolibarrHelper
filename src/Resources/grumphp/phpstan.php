@@ -37,3 +37,7 @@ Helper::dol()->boot();
 dol_include_once("/core/lib/admin.lib.php");
 dol_include_once('/core/class/html.form.class.php');
 dol_include_once('/core/lib/product.lib.php');
+dol_include_once('/core/lib/product.lib.php');
+dol_include_once('/product/class/product.class.php');
+dol_include_once('/product/stock/class/entrepot.class.php');
+dol_include_once('/product/stock/class/mouvementstock.class.php');
