@@ -91,9 +91,9 @@ class ProductActions
      *
      * @global DoliDB $db
      *
-     * @param string $ref
-     * @param array  $values
-     * @param bool   $runTriggers
+     * @param Product $product
+     * @param array   $values
+     * @param bool    $runTriggers
      *
      * @return Product
      */
