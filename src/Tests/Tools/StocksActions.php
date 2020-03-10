@@ -16,7 +16,6 @@
 namespace BadPixxel\Dolibarr\Tests\Tools;
 
 use BadPixxel\Dolibarr\Helper;
-use BadPixxel\ProductMixer\Tests\Names;
 use DoliDB;
 use Entrepot;
 use MouvementStock;
@@ -153,7 +152,7 @@ class StocksActions
         $product->load_stock();
         //====================================================================//
         // Ensure Warehouse Id
-        $warehouse = self::getWarehouse($whref ? $whref : Names::WH_1);
+        $warehouse = self::getWarehouse($whref);
         //====================================================================//
         // Ciorrect Stocks
         $current = self::get($product, $whref);
@@ -196,8 +195,8 @@ class StocksActions
     /**
      * Update Warehouse with Values
      *
-     * @param Product $warehouse
-     * @param array   $values
+     * @param Entrepot $warehouse
+     * @param array    $values
      *
      * @return void
      */
