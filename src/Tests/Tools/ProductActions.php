@@ -79,7 +79,7 @@ class ProductActions
 
         self::init();
         $product = new Product($db);
-        $product->fetch(null, $ref);
+        $product->fetch(0, $ref);
         Assert::assertNotEmpty($product->id);
         Assert::assertEquals($ref, $product->ref);
 

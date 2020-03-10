@@ -82,13 +82,18 @@ class StocksActions
      *
      * @return Entrepot
      */
-    public static function getWarehouse(string $ref): Entrepot
+    public static function getWarehouse(string $ref = null): Entrepot
     {
         global $db;
 
         self::init();
         $warehouse = new Entrepot($db);
-        $warehouse->fetch(null, $ref);
+        if ($ref) {
+            $warehouse->fetch(0, $ref);
+        }
+        if (!$ref) {
+            $warehouse->fetch(1);
+        }
         Assert::assertNotEmpty($warehouse->id);
         Assert::assertEquals($ref, $warehouse->ref);
 
@@ -112,7 +117,7 @@ class StocksActions
         global $db, $user;
         //====================================================================//
         // Ensure Warehouse Id
-        $warehouse = self::getWarehouse($warhouse ? $warhouse : Names::WH_1);
+        $warehouse = self::getWarehouse($warhouse);
         //====================================================================//
         // Create Stock Mouvement Object
         $movementstock = new MouvementStock($db);
