@@ -16,6 +16,7 @@
 namespace BadPixxel\Dolibarr\Helpers;
 
 use BadPixxel\Dolibarr\Models\AbstractHelper;
+use Exception;
 
 /**
  * Build & Render Tables Blocks
@@ -199,5 +200,43 @@ class Logger extends AbstractHelper
         }
 
         return $noError;
+    }
+
+    /**
+     * Catch Dolibarr Common Objects Errors and Push to PhpUnit
+     *
+     * @param null|object $subject Focus on a specific object
+     *
+     * @return void
+     *
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
+    public static function assertDolibarrErrors($subject = null): void
+    {
+        global $db, $langs;
+        //====================================================================//
+        // Safety Check
+        if (!is_object($subject)) {
+            return;
+        }
+        //====================================================================//
+        // Catch Database Errors
+        if (isset($subject->error) && !empty($subject->error) && !empty($db->lasterror())) {
+            throw new Exception(html_entity_decode($db->lasterror()));
+        }
+        //====================================================================//
+        // Simple Error
+        if (isset($subject->error) && !empty($subject->error) && is_scalar($subject->error)) {
+            throw new Exception(html_entity_decode($langs->trans($subject->error)).PHP_EOL);
+        }
+        //====================================================================//
+        // Array of Errors
+        if (isset($subject->errors) && is_iterable($subject->errors)) {
+            foreach ($subject->errors as $error) {
+                if (is_scalar($error) && !empty($error)) {
+                    throw new Exception(html_entity_decode($langs->trans($error)).PHP_EOL);
+                }
+            }
+        }
     }
 }

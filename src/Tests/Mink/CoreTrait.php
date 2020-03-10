@@ -112,7 +112,6 @@ trait CoreTrait
         self::assertInstanceOf(Element::class, $indexTitle);
         //====================================================================//
         // On verifie que la config Minimale est faite
-        $this->ensureConfig();
         if (false !== strpos(strtolower($indexTitle->getHtml()), "configuration")) {
             $this->ensureConfig();
         } else {
