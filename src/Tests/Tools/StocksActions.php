@@ -21,7 +21,6 @@ use Entrepot;
 use MouvementStock;
 use PHPUnit\Framework\Assert;
 use Product;
-use BadPixxel\Dolibarr\Tests\Tools\DatabaseActions;
 
 /**
  * Execute Dolibarr Products Stocks Actions for PhpUnit Tests
@@ -94,7 +93,7 @@ class StocksActions
         }
         if (!$ref) {
             $warehouse->fetch(1);
-        Assert::assertNotEmpty($warehouse->ref);
+            Assert::assertNotEmpty($warehouse->ref);
         }
         Assert::assertNotEmpty($warehouse->id);
 
@@ -204,7 +203,7 @@ class StocksActions
     public static function reset(): void
     {
         global $db;
-        
+
         //====================================================================//
         // Clear All Stocks Mouvements
         Assert::assertTrue(DatabaseActions::truncateTable("stock_mouvement"));
@@ -212,12 +211,11 @@ class StocksActions
         //====================================================================//
         // Force All Products Stocks to 0
         Assert::assertTrue(
-            $db->query("UPDATE ".MAIN_DB_PREFIX."product SET stock = '0';"), 
+            $db->query("UPDATE ".MAIN_DB_PREFIX."product SET stock = '0';"),
             (string) $db->lasterror
         );
     }
-        
-    
+
     /**
      * Update Warehouse with Values
      *
