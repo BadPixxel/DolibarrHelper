@@ -139,5 +139,6 @@ class CoreActions
     public static function setParameter(string $key, string $value)
     {
         Helper::dol()->setConst($key, $value);
+        self::reload();
     }
 }
