@@ -108,6 +108,8 @@ script:
 
 # Tell Travis CI we're using PHP
 language: php
+os: linux
+dist: xenial
 
 # Tell Travis CI we're using Cache
 cache:
