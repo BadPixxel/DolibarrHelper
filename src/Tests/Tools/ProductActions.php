@@ -52,6 +52,8 @@ class ProductActions
             "weight" => 0,
             "type" => 0,
             "barcode" => -1,
+            "status" => 1,
+            "status_buy" => 1,
         );
         self::setProperties($product, array_replace_recursive($dfValues, $values));
         //====================================================================//
