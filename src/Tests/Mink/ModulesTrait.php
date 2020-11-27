@@ -32,7 +32,7 @@ trait ModulesTrait
         self::assertInstanceOf(Element::class, $btn);
         //====================================================================//
         // Verify Module was Found
-        $this->assertContains(
+        $this->assertStringContainsStringIgnoringCase(
             'fa-toggle-',
             $btn->getHtml()
         );
@@ -48,7 +48,7 @@ trait ModulesTrait
         //====================================================================//
         // Verify Module was Found
         self::assertInstanceOf(Element::class, $btn);
-        self::assertContains('fa-toggle-', $btn->getHtml());
+        self::assertStringContainsStringIgnoringCase('fa-toggle-', $btn->getHtml());
         $span = $btn->find('css', 'span');
         self::assertInstanceOf(Element::class, $span);
         if ($span->hasClass('fa-toggle-off')) {
@@ -66,6 +66,6 @@ trait ModulesTrait
         // Verify Module is Marked as Enabled
         $reloadBtn = $page->find('xpath', '//a[contains(@href, "'.$modName.'")]');
         self::assertInstanceOf(Element::class, $reloadBtn);
-        self::assertContains('fa-toggle-on', $reloadBtn->getHtml());
+        self::assertStringContainsStringIgnoringCase('fa-toggle-on', $reloadBtn->getHtml());
     }
 }

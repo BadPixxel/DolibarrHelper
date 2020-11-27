@@ -116,8 +116,11 @@ trait CoreTrait
             $this->ensureConfig();
         } else {
             //====================================================================//
-            // On verifie
-            self::assertContains('accueil', strtolower($indexTitle->getHtml()));
+            // On vérifie
+            self::assertStringContainsStringIgnoringCase(
+                'accueil',
+                strtolower($indexTitle->getHtml())
+            );
         }
     }
 
@@ -197,7 +200,10 @@ trait CoreTrait
         // On verifie
         $title = $this->visit('index.php')->find('css', 'title');
         self::assertInstanceOf(Element::class, $title);
-        self::assertContains('accueil', strtolower($title->getHtml()));
+        self::assertStringContainsStringIgnoringCase(
+            'accueil',
+            strtolower($title->getHtml())
+        );
     }
 
     /**
