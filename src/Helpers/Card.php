@@ -72,8 +72,8 @@ class Card extends AbstractHelper
             Helper::getDesc(),
             "Website",
             Helper::html()->absoluteLink(
-                "http://www.dolibarr-addict.com",
-                'www.dolibarr-addict.com',
+                "http://badpixxel.com",
+                'badpixxel.com',
                 array("title" => "Visit our website")
             )
         ));
