@@ -62,6 +62,8 @@ stages:
 
 tests:php-7.3:
   image: registry.gitlab.com/badpixxel-projects/php-sdk:php-7.3
+  variables:
+      DOLIBARR_VERSION:  12.0
   <<: *core_tests
 
 #tests:php-7.2:
