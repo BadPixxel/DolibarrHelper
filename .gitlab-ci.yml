@@ -39,7 +39,7 @@ stages:
         # Install Dolibarr
         - cat $CI_PROJECT_DIR/src/Resources/gitlab-ci/install_dolibarr.sh | sh
         # Install Module
-        - cat $CI_PROJECT_DIR/src/Resources/gitlab-ci/install_module.sh | sh
+        - cat $CI_PROJECT_DIR/src/Resources/gitlab-ci/install_module.sh | bash
     ################################################################################
     # Run Test Script
     script:
