@@ -13,7 +13,7 @@
 
 use BadPixxel\Dolibarr\Helper;
 
-ini_set('display_errors', 1);
+ini_set('display_errors', "1");
 
 //====================================================================//
 //   INCLUDES
@@ -43,6 +43,7 @@ Helper::dol()->isAdmin();
 //====================================================================//
 
 $title = "Dolibarr Helper Test/Demo Page";
+// @phpstan-ignore-next-line
 llxHeader('', $title);
 print_fiche_titre($title, '', 'setup');
 
@@ -122,5 +123,5 @@ if (GETPOSTISSET("doDump")) {
 //====================================================================//
 // Render Library Id Card
 Helper::card()->render();
-
+// @phpstan-ignore-next-line
 llxFooter();
