@@ -21,6 +21,16 @@ use BadPixxel\Dolibarr\Models\AbstractHelper;
 class Framework extends AbstractHelper
 {
     /**
+     * @var string
+     */
+    const MAIN_INC = "main.inc";
+
+    /**
+     * @var string
+     */
+    const MASTER_INC = "master.inc";
+
+    /**
      * Detect Document Root Path
      *
      * @var null|string
@@ -28,7 +38,7 @@ class Framework extends AbstractHelper
     private $rootPath;
 
     /**
-     * Detect Main Include File Path to Boot Dolibarr Environement
+     * Detect Main Include File Path to Boot Dolibarr Environment
      *
      * @SuppressWarnings(PHPMD.ExitExpression)
      */
@@ -37,18 +47,19 @@ class Framework extends AbstractHelper
         //====================================================================//
         // Try Root Path Detection
         $rootPath = $this->getRootPath();
+        $mainInc = "/".self::MAIN_INC.".php";
         //====================================================================//
         // Path detection Failed
-        if ((null === $rootPath) || (!is_file($rootPath."/main.inc.php"))) {
-            die("Detection of main.inc.php fails");
+        if ((null === $rootPath) || (!is_file($rootPath.$mainInc))) {
+            die("Detection of MAIN includes file fails");
         }
         //====================================================================//
         // Return Path to Dolibarr MainInclude
-        return $rootPath."/main.inc.php";
+        return $rootPath.$mainInc;
     }
 
     /**
-     * Detect Master Include File and Boot Dolibarr Environement for Scripting
+     * Detect Master Include File and Boot Dolibarr Environment for Scripting
      *
      * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      * @SuppressWarnings(PHPMD.CamelCaseVariableName)
@@ -64,14 +75,15 @@ class Framework extends AbstractHelper
         //====================================================================//
         // Try Root Path Detection
         $rootPath = $this->getRootPath();
+        $masterInc = "/".self::MASTER_INC.".php";
         //====================================================================//
-        // Path detection Failled
-        if ((null === $rootPath) || (!is_file($rootPath."/master.inc.php"))) {
-            die("Detection of master.inc.php fails");
+        // Path detection Failed
+        if ((null === $rootPath) || (!is_file($rootPath.$masterInc))) {
+            die("Detection of MASTER includes file fails");
         }
         //====================================================================//
         // Boot Dolibarr
-        include_once($rootPath."/master.inc.php");
+        include_once($rootPath.$masterInc);
         include_once DOL_DOCUMENT_ROOT.'/core/lib/functions.lib.php';
     }
 
