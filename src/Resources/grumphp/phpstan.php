@@ -11,6 +11,10 @@
  *  file that was distributed with this source code.
  */
 
+//====================================================================//
+// PHP CS Overrides
+// phpcs:disable PSR1.Files.SideEffects
+
 use BadPixxel\Dolibarr\Helper;
 
 define('DOL_PHPUNIT_HOST', "");

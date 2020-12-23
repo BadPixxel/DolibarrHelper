@@ -19,6 +19,9 @@
 parameters:
     mode:           "badpixxel"
 
+    # Php Stan
+    stan-config:        "./src/Resources/grumphp/phpstan.neon"
+
 #############################################
 # Import Config. from Generic Bundle
 imports:
