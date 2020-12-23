@@ -1,16 +1,14 @@
 <?php
 
 /*
- * This file is part of BadPixxel Dolibarr Helper Library.
+ *  Copyright (C) 2020 BadPixxel <www.badpixxel.com>
  *
- * Copyright (C) 2015-2020 BadPixxel  <www.badpixxel.com>
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
  */
 
 namespace BadPixxel\Dolibarr\Helpers;
@@ -40,7 +38,7 @@ class Framework extends AbstractHelper
         // Try Root Path Detection
         $rootPath = $this->getRootPath();
         //====================================================================//
-        // Path detection Failled
+        // Path detection Failed
         if ((null === $rootPath) || (!is_file($rootPath."/main.inc.php"))) {
             die("Detection of main.inc.php fails");
         }
@@ -69,7 +67,7 @@ class Framework extends AbstractHelper
         //====================================================================//
         // Path detection Failled
         if ((null === $rootPath) || (!is_file($rootPath."/master.inc.php"))) {
-            die("Detction of master.inc.php fails");
+            die("Detection of master.inc.php fails");
         }
         //====================================================================//
         // Boot Dolibarr
@@ -198,8 +196,8 @@ class Framework extends AbstractHelper
     /**
      * Safe Get of A Global Parameter
      *
-     * @param string $key     Global Parameter Key
-     * @param string $default Default Parameter Value
+     * @param string      $key     Global Parameter Key
+     * @param null|string $default Default Parameter Value
      *
      * @return null|string
      */

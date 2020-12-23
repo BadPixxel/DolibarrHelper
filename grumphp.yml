@@ -14,113 +14,12 @@
 #
 ################################################################################
 
+#############################################
+#   Local Config
 parameters:
-    
-    #############################################        
-    #   Local Config 
-    #############################################        
-    core_dir:       "./src/Resources/grumphp"     
-    mode:           "module"
-    level:          8
-    
-    #############################################        
-    #   Base Configs 
-    git_dir:        .
-    bin_dir:        "vendor/bin"
-    ascii:
-        failed:     "%core_dir%/grumphp-grumpy.txt"
-        succeeded:  "%core_dir%/grumphp-happy.txt"
-    process_timeout: 180
-    
-    #############################################        
-    #   Tasks Configs        
-    tasks:
-        
-        #############################################        
-        #   Composer Verifs           
-        composer:
-            file:           "./composer.json"
-            
-        #############################################        
-        #   Syntax Errors Detection             
-        phplint:
-            exclude:        ['vendor']
-            triggered_by:   ['php']
-            
-        jsonlint:
-            detect_key_conflicts: true
-            
-        xmllint: ~
-        
-        yamllint: ~
-            
-        #############################################        
-        #   Blacklist Codes Detection
-        git_blacklist:
-            keywords:
-                - "var_dump"
-                - "dump("
-                - "console.log"
-                - "print_r"
-                - "die("
-            triggered_by: [php, js, twig]
-        
-        #############################################        
-        #   Security Checks 
-        securitychecker: ~
-        
-        #############################################        
-        #   Code Quality   
-        phpcsfixer2:    
-            allow_risky:    true
-            config:         "%core_dir%/php_cs.dist"
-            
-        phpcs:
-            standard:       "PSR2"
-            triggered_by:   [php]
-            ignore_patterns:
-                - phpstan.php
-                - nusoap.php
-                - soap.php
-                - BaseCase.php                
-                - TestCase.php
-        phpmd:
-            ruleset:        ["%core_dir%/phpmd.xml"]
-            exclude:        
-                - "vendor"
-                
-        phpcpd: 
-            exclude:        
-                - "vendor"    
-                
-        phpstan: 
-            level:          "%level%"
-            configuration:  "%core_dir%/phpstan.neon"
-            ignore_patterns:
-                - pages/index.php
+    mode:           "badpixxel"
 
-    #############################################        
-    #   Testsuites Configs
-    #   => Travis   >>  Base Test Suite for All PHP Versions
-    #   => CsFixer  >>  Advanced Styles for Php
-    #   => PhpStan  >>  Only for PHP Versions > PHP7.1
-    testsuites:
-        travis:
-            tasks:
-                - composer
-                - phplint
-                - jsonlint
-                - xmllint
-                - yamllint
-                - git_blacklist
-                - phpcs 
-                - phpmd
-                - phpcpd
-
-        csfixer:
-            tasks: 
-                - phpcsfixer2
-                
-        phpstan:
-            tasks: 
-                - phpstan 
+#############################################
+# Import Config. from Generic Bundle
+imports:
+    - { resource: "./vendor/badpixxel/php-sdk/grumphp/generic.yml" }

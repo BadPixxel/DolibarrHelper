@@ -1,26 +1,24 @@
 <?php
 
 /*
- * This file is part of BadPixxel Dolibarr Helper Library.
+ *  Copyright (C) 2020 BadPixxel <www.badpixxel.com>
  *
- * Copyright (C) 2015-2019 BadPixxel  <www.badpixxel.com>
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
  */
 
 // Take a look at conf.php.example file for an example of conf.php file
 // and explanations for all possibles parameters.
 //
 $dolibarr_main_url_root = 'http://localhost';
-$dolibarr_main_document_root = '/tmp/Dolibarr/htdocs';
+$dolibarr_main_document_root = '/var/www/html/htdocs';
 $dolibarr_main_url_root_alt = '/custom';
-$dolibarr_main_document_root_alt = '/tmp/Dolibarr/htdocs/custom';
-$dolibarr_main_data_root = '/tmp/Dolibarr/htdocs/documents';
+$dolibarr_main_document_root_alt = '/var/www/html/htdocs/custom';
+$dolibarr_main_data_root = '/var/www/html/htdocs/documents';
 $dolibarr_main_db_host = 'localhost';
 $dolibarr_main_db_port = '3306';
 $dolibarr_main_db_name = 'NoDatabase';
