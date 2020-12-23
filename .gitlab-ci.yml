@@ -44,7 +44,7 @@ stages:
     # Run Test Script
     script:
         # Move to Dolibarr Root Dir
-        - cd "$DOL_BUILD_DIR/htdocs/custom"
+        - cd /var/www/html/htdocs/custom
         # Execute Composer
         - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/composer.sh  | sh
         # Execute Grumphp Testsuite

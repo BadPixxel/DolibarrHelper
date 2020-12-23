@@ -16,12 +16,10 @@ echo "----------------------------------------------------"
 echo "--> Install Dolibarr $DOLIBARR_VERSION"
 echo "----------------------------------------------------"
 
-export DOL_BUILD_DIR=/var/www/html
-
 ################################################################
 # Clone Dolibarr & Move to Web folder
-git clone --depth=1 --branch="$DOLIBARR_VERSION" https://github.com/Dolibarr/dolibarr.git $DOL_BUILD_DIR
+git clone --depth=1 --branch="$DOLIBARR_VERSION" https://github.com/Dolibarr/dolibarr.git /var/www/html
 
 ################################################################
 # Copy Dolibarr Configuration
-cp -Rf $CI_PROJECT_DIR/src/Resources/gitlab-ci/conf.php     $DOL_BUILD_DIR/htdocs/conf/conf.php
+cp -Rf $CI_PROJECT_DIR/src/Resources/gitlab-ci/conf.php     /var/www/html/htdocs/conf/conf.php

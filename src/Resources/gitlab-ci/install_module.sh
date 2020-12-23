@@ -20,5 +20,5 @@ echo "----------------------------------------------------"
 # Copy Contents
 echo "Copy Splash Module to Dolibarr folder"
 shopt -s dotglob  # for considering dot files (turn on dot files)
-cp -Rf $CI_PROJECT_DIR/*                    $DOL_BUILD_DIR/htdocs/custom/
-ls -l -a $DOL_BUILD_DIR/htdocs/custom/
+cp -Rf $CI_PROJECT_DIR/*                    /var/www/html/htdocs/custom/
+ls -l -a /var/www/html/htdocs/custom/
