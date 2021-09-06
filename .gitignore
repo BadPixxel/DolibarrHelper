@@ -8,3 +8,4 @@ composer.phar
 /src/.directory
 /.phpunit.result.cache
 /.idea/
+/.php-cs-fixer.cache

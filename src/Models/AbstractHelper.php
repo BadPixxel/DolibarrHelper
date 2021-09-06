@@ -28,12 +28,12 @@ abstract class AbstractHelper implements HelperInterface
     /**
      * @var string
      */
-    protected static $helperName = null;
+    protected static $helperName;
 
     /**
      * @var string
      */
-    protected static $helperDesc = null;
+    protected static $helperDesc;
 
     /**
      * {@inheritdoc}
