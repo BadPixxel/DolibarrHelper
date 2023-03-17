@@ -117,6 +117,8 @@ class Logger extends AbstractHelper
     public static function log(string $text): bool
     {
         global $conf;
+
+        /** @phpstan-ignore-next-line  */
         if (!empty(DOL_HELPER_DEBUG) && ($conf->global->SYSLOG_LEVEL >= 5)) {
             setEventMessage($text, 'mesgs');
         }
@@ -138,6 +140,8 @@ class Logger extends AbstractHelper
     public static function debug(string $text): bool
     {
         global $conf;
+
+        /** @phpstan-ignore-next-line  */
         if (!empty(DOL_HELPER_DEBUG) && ($conf->global->SYSLOG_LEVEL >= 6)) {
             setEventMessage($text, 'warnings');
         }
