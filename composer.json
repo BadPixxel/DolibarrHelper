@@ -30,5 +30,10 @@
         "badpixxel/php-sdk":                "dev-main",
         "behat/mink":                       "^1.7",
         "behat/mink-goutte-driver":         "^1.2"        
+    },
+    "config": {
+        "allow-plugins": {
+            "phpro/grumphp": true
+        }
     }
 }
