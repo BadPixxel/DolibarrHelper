@@ -217,7 +217,7 @@ class Framework extends AbstractHelper
     {
         global $conf;
 
-        return isset($conf->global->{$key})  ? $conf->global->{$key} : $default;
+        return $conf->global->{$key} ?? $default;
     }
 
     /**
@@ -225,11 +225,11 @@ class Framework extends AbstractHelper
      *
      * @param string $key   Global Parameter Key
      * @param string $value Default Parameter Value
-     * @param mixed  $type
+     * @param string $type
      *
      * @return bool
      */
-    public static function setConst(string $key, $value, $type = "chaine"): bool
+    public static function setConst(string $key, string $value, string $type = "chaine"): bool
     {
         global $db, $conf, $langs;
 
