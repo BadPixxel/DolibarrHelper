@@ -32,56 +32,56 @@ class Helper
     /**
      * Framework Helper
      *
-     * @var Framework
+     * @var null|Framework
      */
     private static $framework;
 
     /**
      * Info Card Helper
      *
-     * @var Card
+     * @var null|Card
      */
     private static $card;
 
     /**
      * Html Tables Helper
      *
-     * @var Tables
+     * @var null|Tables
      */
     private static $tables;
 
     /**
      * Html Forms Helper
      *
-     * @var Forms
+     * @var null|Forms
      */
     private static $forms;
 
     /**
      * Html Tables Forms Helper
      *
-     * @var TableForms
+     * @var null|TableForms
      */
     private static $tableForms;
 
     /**
      * Html Elements Helper
      *
-     * @var Elements
+     * @var null|Elements
      */
     private static $elements;
 
     /**
      * Dolibarr Logs Helper
      *
-     * @var Logger
+     * @var null|Logger
      */
     private static $logger;
 
     /**
      * Dolibarr Units Helper
      *
-     * @var Units
+     * @var null|Units
      */
     private static $units;
 
@@ -90,7 +90,7 @@ class Helper
      *
      * @return string
      */
-    public static function getName()
+    public static function getName(): string
     {
         return DOL_HELPER_CODE;
     }
@@ -100,7 +100,7 @@ class Helper
      *
      * @return string Name of logger
      */
-    public static function getDesc()
+    public static function getDesc(): string
     {
         return DOL_HELPER_NAME;
     }
@@ -110,7 +110,7 @@ class Helper
      *
      * @return string
      */
-    public static function getVersion()
+    public static function getVersion(): string
     {
         return DOL_HELPER_VERSION;
     }
@@ -127,13 +127,13 @@ class Helper
      */
     public static function dol(): Framework
     {
-        if (!isset(static::$framework)) {
+        if (!isset(self::$framework)) {
             //====================================================================//
             //  Ensure Helper Init
             self::init();
             //====================================================================//
             //  Load Framework Helper
-            static::$framework = new Framework();
+            self::$framework = new Framework();
         }
 
         return static::$framework;
@@ -146,16 +146,16 @@ class Helper
      */
     public static function card(): Card
     {
-        if (!isset(static::$card)) {
+        if (!isset(self::$card)) {
             //====================================================================//
             //  Ensure Helper Init
             self::init();
             //====================================================================//
             //  Load Card Helper
-            static::$card = new Card();
+            self::$card = new Card();
         }
 
-        return static::$card;
+        return self::$card;
     }
 
     /**
@@ -165,16 +165,16 @@ class Helper
      */
     public static function tables(): Tables
     {
-        if (!isset(static::$tables)) {
+        if (!isset(self::$tables)) {
             //====================================================================//
             //  Ensure Helper Init
             self::init();
             //====================================================================//
             //  Load Tables Helper
-            static::$tables = new Tables();
+            self::$tables = new Tables();
         }
 
-        return static::$tables;
+        return self::$tables;
     }
 
     /**
@@ -184,16 +184,16 @@ class Helper
      */
     public static function html(): Elements
     {
-        if (!isset(static::$elements)) {
+        if (!isset(self::$elements)) {
             //====================================================================//
             //  Ensure Helper Init
             self::init();
             //====================================================================//
             //  Load Html Elements Helper
-            static::$elements = new Elements();
+            self::$elements = new Elements();
         }
 
-        return static::$elements;
+        return self::$elements;
     }
 
     /**
@@ -203,16 +203,16 @@ class Helper
      */
     public static function forms(): Forms
     {
-        if (!isset(static::$forms)) {
+        if (!isset(self::$forms)) {
             //====================================================================//
             //  Ensure Helper Init
             self::init();
             //====================================================================//
             //  Load Forms Elements Helper
-            static::$forms = new Forms();
+            self::$forms = new Forms();
         }
 
-        return static::$forms;
+        return self::$forms;
     }
 
     /**
@@ -222,13 +222,13 @@ class Helper
      */
     public static function tableForms(): TableForms
     {
-        if (!isset(static::$tableForms)) {
+        if (!isset(self::$tableForms)) {
             //====================================================================//
             //  Ensure Helper Init
             self::init();
             //====================================================================//
             //  Load Tables Helper
-            static::$tableForms = new TableForms();
+            self::$tableForms = new TableForms();
         }
 
         return static::$tableForms;
@@ -241,16 +241,16 @@ class Helper
      */
     public static function log(): Logger
     {
-        if (!isset(static::$logger)) {
+        if (!isset(self::$logger)) {
             //====================================================================//
             //  Ensure Helper Init
             self::init();
             //====================================================================//
             //  Load Logger Helper
-            static::$logger = new Logger();
+            self::$logger = new Logger();
         }
 
-        return static::$logger;
+        return self::$logger;
     }
 
     /**
@@ -260,16 +260,16 @@ class Helper
      */
     public static function units(): Units
     {
-        if (!isset(static::$units)) {
+        if (!isset(self::$units)) {
             //====================================================================//
             //  Ensure Helper Init
             self::init();
             //====================================================================//
             //  Load Units Helper
-            static::$units = new Units();
+            self::$units = new Units();
         }
 
-        return static::$units;
+        return self::$units;
     }
 
     //====================================================================//
