@@ -136,7 +136,7 @@ class Helper
             self::$framework = new Framework();
         }
 
-        return static::$framework;
+        return self::$framework;
     }
 
     /**
@@ -231,7 +231,7 @@ class Helper
             self::$tableForms = new TableForms();
         }
 
-        return static::$tableForms;
+        return self::$tableForms;
     }
 
     /**
