@@ -56,6 +56,12 @@ stages:
     after_script:
       - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/after.sh | sh
 
+tests:php-8.0-v14:
+  image: registry.gitlab.com/badpixxel-projects/php-sdk:php-8.0
+  variables:
+    DOLIBARR_VERSION:  "14.0"
+  <<: *core_tests
+
 tests:php-7.4-v12:
   image: registry.gitlab.com/badpixxel-projects/php-sdk:php-7.4
   variables:
