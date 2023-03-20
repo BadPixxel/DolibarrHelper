@@ -36,6 +36,7 @@ class DolibarrTestCase extends TestCase
         // Boot Dolibarr in PHP
         Helper::dol()->boot();
         CoreActions::setupEntity();
+        CoreActions::setupMySoc();
         CoreActions::setupUser();
         //====================================================================//
         // Start Mink Browser Session & Connect to Dolibarr

@@ -62,6 +62,29 @@ class CoreActions
     }
 
     /**
+     * Initiate Test MySoc Global Variable if not already defined
+     *
+     * @return boolean
+     */
+    public static function setupMySoc(): bool
+    {
+        global $db, $conf, $mysoc;
+
+        //====================================================================//
+        // CHECK MySoc ALREADY LOADED
+        if (isset($mysoc->id) && !empty($mysoc->id)) {
+            return true;
+        }
+        //====================================================================//
+        // CREATE MySoc OBJECT
+        require_once DOL_DOCUMENT_ROOT.'/societe/class/societe.class.php';
+        $mysoc = new \Societe($db);
+        $mysoc->setMysoc($conf);
+
+        return true;
+    }
+
+    /**
      * Initiate Test Entity
      *
      * @return bool
