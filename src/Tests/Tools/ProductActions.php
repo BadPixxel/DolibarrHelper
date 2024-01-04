@@ -60,6 +60,7 @@ class ProductActions
             Helper::log()->catchDolibarrErrors($product);
         }
         Assert::assertNotEmpty($product->id);
+        Assert::assertInstanceOf(Product::class, $product);
 
         return $product;
     }
@@ -105,6 +106,7 @@ class ProductActions
         self::setProperties($product, $values);
         //====================================================================//
         // Update Product in database
+        Assert::assertInstanceOf(Product::class, $product);
         Assert::assertNotEmpty($product->id);
         $result = $product->update($product->id, $user, $runTriggers ? 0 : 1);
         if (1 != $result) {

@@ -96,7 +96,7 @@ class CoreActions
 
         //====================================================================//
         // CHECK PHPUNIT ENTITY IS DEFINED
-        if (!defined("DOL_PHPUNIT_ENTITY") || empty(DOL_PHPUNIT_ENTITY)) {
+        if (!defined("DOL_PHPUNIT_ENTITY")) {
             return false;
         }
         //====================================================================//
