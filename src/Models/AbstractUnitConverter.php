@@ -22,11 +22,11 @@ use BadPixxel\Dolibarr\Helpers\Framework;
 abstract class AbstractUnitConverter
 {
     /**
-     * Current Install Units Dictionnary
+     * Current Install Units Dictionary
      *
-     * @var array
+     * @var null|array
      */
-    protected static $dico;
+    protected static ?array $dico;
 
     /**
      * List of Known Dolibarr Units factors
@@ -56,7 +56,7 @@ abstract class AbstractUnitConverter
         }
         //====================================================================//
         // V10.0.0 to V10.0.2 => Dolibarr Unit IDs Stored in Object
-        if (!static::loadDolUnits() || !isset(static::$dico[$unit])) {
+        if (!self::loadDolUnits() || !isset(static::$dico[$unit])) {
             return $fallBack;
         }
         if (isset(static::$knowUnits[static::$dico[$unit]->scale])) {
@@ -83,12 +83,12 @@ abstract class AbstractUnitConverter
         }
         //====================================================================//
         // V10.0.0 to V10.0.2 => Dolibarr Unit IDs Stored in Object
-        if (!static::loadDolUnits()) {
+        if (!self::loadDolUnits()) {
             return 0;
         }
         //====================================================================//
-        // Search for Unit in Dictionnary
-        foreach (static::$dico as $cUnit) {
+        // Search for Unit in Dictionary
+        foreach (static::$dico ?? array() as $cUnit) {
             if ($cUnit->unit_type != $type) {
                 continue;
             }
@@ -116,12 +116,12 @@ abstract class AbstractUnitConverter
             return true;
         }
         //====================================================================//
-        // Dictionnary Already Loaded
+        // Dictionary Already Loaded
         if (isset(static::$dico)) {
             return true;
         }
         //====================================================================//
-        // Load Dictionnary Already Loaded
+        // Load Dictionary Already Loaded
         static::$dico = array();
         $sql = "SELECT t.rowid as id, t.code, t.label, t.short_label, t.unit_type, t.scale, t.active";
         $sql .= " FROM ".MAIN_DB_PREFIX."c_units as t WHERE t.active=1";
@@ -130,7 +130,7 @@ abstract class AbstractUnitConverter
             return Helper::log()->error($db->lasterror());
         }
         //====================================================================//
-        // Parse Dictionnary to Cache
+        // Parse Dictionary to Cache
         $num = $db->num_rows($resql);
         if ($num > 0) {
             while ($obj = $db->fetch_object($resql)) {

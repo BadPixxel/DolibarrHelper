@@ -42,6 +42,7 @@ class CoreActions
         //====================================================================//
         // CHECK PHPUNIT USER IS DEFINED
         Assert::assertTrue(defined("DOL_PHPUNIT_USER"));
+        /** @phpstan-ignore-next-line */
         Assert::assertNotEmpty(DOL_PHPUNIT_USER);
         //====================================================================//
         // LOAD USER FROM DATABASE
@@ -95,7 +96,7 @@ class CoreActions
 
         //====================================================================//
         // CHECK PHPUNIT ENTITY IS DEFINED
-        if (!defined("DOL_PHPUNIT_ENTITY") && !empty(DOL_PHPUNIT_ENTITY)) {
+        if (!defined("DOL_PHPUNIT_ENTITY") || empty(DOL_PHPUNIT_ENTITY)) {
             return false;
         }
         //====================================================================//
