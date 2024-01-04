@@ -102,6 +102,7 @@ trait HtmlBuilderTrait
         foreach ($attributes as $key => $value) {
             $attrString .= $key.'="'.$value.'" ';
         }
+
         //====================================================================//
         //  Retun Attributes String
         return $attrString;
@@ -137,6 +138,7 @@ trait HtmlBuilderTrait
             $queryString .= $key.'='.$value;
             $first = false;
         }
+
         //====================================================================//
         //  Retun Query String
         return $queryString;

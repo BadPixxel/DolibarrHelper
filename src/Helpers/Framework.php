@@ -53,6 +53,7 @@ class Framework extends AbstractHelper
         if ((null === $rootPath) || (!is_file($rootPath.$mainInc))) {
             die("Detection of MAIN includes file fails");
         }
+
         //====================================================================//
         // Return Path to Dolibarr MainInclude
         return $rootPath.$mainInc;
@@ -268,6 +269,7 @@ class Framework extends AbstractHelper
         if (0 === strpos($relativePath, "#")) {
             return self::getCurrentUri().$relativePath;
         }
+
         //====================================================================//
         // Link to Another Relative Path
         return dol_buildpath($relativePath, 1);

@@ -51,6 +51,7 @@ class Units
         //====================================================================//
         // Include Needed Dolibarr Functions Libraries
         dol_include_once('/core/lib/product.lib.php');
+
         //====================================================================//
         // Forward to Convert
         return WeightConverter::normalize($weight);
@@ -83,6 +84,7 @@ class Units
         //====================================================================//
         // Include Needed Dolibarr Functions Libraries
         dol_include_once('/core/lib/product.lib.php');
+
         //====================================================================//
         // Forward to Convert
         return LengthConverter::normalize($length);
@@ -115,6 +117,7 @@ class Units
         //====================================================================//
         // Include Needed Dolibarr Functions Libraries
         dol_include_once('/core/lib/product.lib.php');
+
         //====================================================================//
         // Forward to Convert
         return SurfaceConverter::normalize($surface);
@@ -147,6 +150,7 @@ class Units
         //====================================================================//
         // Include Needed Dolibarr Functions Libraries
         dol_include_once('/core/lib/product.lib.php');
+
         //====================================================================//
         // Forward to Convert
         return VolumeConverter::normalize($volume);

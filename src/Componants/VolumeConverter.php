@@ -49,6 +49,7 @@ class VolumeConverter extends AbstractUnitConverter
         //====================================================================//
         // Detect Generic Unit Factor
         $factor = static::detectUnit((string) $unit, UnitConverter::VOLUME_M3);
+
         //====================================================================//
         // Convert Value to Generic Factor
         return UnitConverter::normalizeVolume((float) $volume, $factor);
@@ -68,18 +69,18 @@ class VolumeConverter extends AbstractUnitConverter
         if ($volume >= 1) {
             $factor = UnitConverter::VOLUME_M3;
             $unit = "0";
-        //====================================================================//
-        // Volume - DecaMeter 3
+            //====================================================================//
+            // Volume - DecaMeter 3
         } elseif ($volume >= 1e-3) {
             $factor = UnitConverter::VOLUME_DM3;
             $unit = "-3";
-        //====================================================================//
-        // Volume - CentiMeter 3
+            //====================================================================//
+            // Volume - CentiMeter 3
         } elseif ($volume >= 1e-6) {
             $factor = UnitConverter::VOLUME_CM3;
             $unit = "-6";
-        //====================================================================//
-        // Volume - MilliMeter 3
+            //====================================================================//
+            // Volume - MilliMeter 3
         } else {
             $factor = UnitConverter::VOLUME_MM3;
             $unit = "-9";

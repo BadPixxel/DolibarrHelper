@@ -47,6 +47,7 @@ class LengthConverter extends AbstractUnitConverter
         //====================================================================//
         // Detect Generic Unit Factor
         $factor = static::detectUnit((string) $unit, UnitConverter::LENGTH_M);
+
         //====================================================================//
         // Convert Value to Generic Factor
         return UnitConverter::normalizeLength((float) $length, $factor);
@@ -66,23 +67,23 @@ class LengthConverter extends AbstractUnitConverter
         if ($length >= 1E3) {
             $factor = UnitConverter::LENGTH_KM;
             $unit = "3";
-        //====================================================================//
-        // Length - Meter
+            //====================================================================//
+            // Length - Meter
         } elseif ($length >= 1) {
             $factor = UnitConverter::LENGTH_M;
             $unit = "0";
-        //====================================================================//
-        // Length - DeciMeter
+            //====================================================================//
+            // Length - DeciMeter
         } elseif ($length >= 1e-1) {
             $factor = UnitConverter::LENGTH_DM;
             $unit = "-1";
-        //====================================================================//
-        // Length - CentiMeter
+            //====================================================================//
+            // Length - CentiMeter
         } elseif ($length >= 1e-2) {
             $factor = UnitConverter::LENGTH_CM;
             $unit = "-2";
-        //====================================================================//
-        // Length - MilliMeter
+            //====================================================================//
+            // Length - MilliMeter
         } else {
             $factor = UnitConverter::LENGTH_MM;
             $unit = "-3";

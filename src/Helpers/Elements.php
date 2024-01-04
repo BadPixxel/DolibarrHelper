@@ -119,6 +119,7 @@ class Elements extends AbstractHelper
         $this->add('<a '.self::attr($linkAttr, $attr).'>');
         $this->add($langs->trans($text));
         $this->add('</a>');
+
         //====================================================================//
         // Return Link Html
         return $this->getHtml();
@@ -205,6 +206,7 @@ class Elements extends AbstractHelper
         //====================================================================//
         //  Merge Defaults with Custom Attributes
         $btnAttr = array_replace(array("class" => "butAction"), is_array($attr) ? $attr : array());
+
         //====================================================================//
         //  Return generic Link
         return $this->absoluteLink(Helper::uri($url), $text, $query, $btnAttr);
@@ -223,6 +225,7 @@ class Elements extends AbstractHelper
         //====================================================================//
         //  Merge Defaults with Custom Attributes
         $btnAttr = array_replace(array("class" => "butActionRefused"), is_array($attr) ? $attr : array());
+
         //====================================================================//
         //  Return generic Link
         return $this->absoluteLink("", $text, array(), $btnAttr);
@@ -243,6 +246,7 @@ class Elements extends AbstractHelper
         //====================================================================//
         //  Merge Defaults with Custom Attributes
         $btnAttr = array_replace(array("class" => "butActionNew"), is_array($attr) ? $attr : array());
+
         //====================================================================//
         //  Return generic Link
         return $this->absoluteLink(Helper::uri($url), $text, $query, $btnAttr);
@@ -261,6 +265,7 @@ class Elements extends AbstractHelper
         //====================================================================//
         //  Merge Defaults with Custom Attributes
         $btnAttr = array_replace(array("class" => "butActionNewRefused"), is_array($attr) ? $attr : array());
+
         //====================================================================//
         //  Return generic Link
         return $this->absoluteLink("", $text, array(), $btnAttr);
@@ -281,6 +286,7 @@ class Elements extends AbstractHelper
         //====================================================================//
         //  Merge Defaults with Custom Attributes
         $btnAttr = array_replace(array("class" => "butActionDelete"), is_array($attr) ? $attr : array());
+
         //====================================================================//
         //  Return generic Link
         return $this->absoluteLink(Helper::uri($url), $text, $query, $btnAttr);
@@ -301,6 +307,7 @@ class Elements extends AbstractHelper
         //====================================================================//
         //  Merge Defaults with Custom Attributes
         $btnAttr = array_replace(array("class" => "butActionTransparent"), is_array($attr) ? $attr : array());
+
         //====================================================================//
         //  Return generic Link
         return $this->absoluteLink(Helper::uri($url), $text, $query, $btnAttr);

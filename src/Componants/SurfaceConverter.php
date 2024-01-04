@@ -47,6 +47,7 @@ class SurfaceConverter extends AbstractUnitConverter
         //====================================================================//
         // Detect Generic Unit Factor
         $factor = static::detectUnit((string) $unit, UnitConverter::AREA_M2);
+
         //====================================================================//
         // Convert Value to Generic Factor
         return UnitConverter::normalizeSurface((float) $surface, $factor);
@@ -66,23 +67,23 @@ class SurfaceConverter extends AbstractUnitConverter
         if ($surface >= 1E3) {
             $factor = UnitConverter::AREA_KM2;
             $unit = "3";
-        //====================================================================//
-        // Surface - Meter 2
+            //====================================================================//
+            // Surface - Meter 2
         } elseif ($surface >= 1) {
             $factor = UnitConverter::AREA_M2;
             $unit = "0";
-        //====================================================================//
-        // Surface - DecaMeter 2
+            //====================================================================//
+            // Surface - DecaMeter 2
         } elseif ($surface >= 1e-2) {
             $factor = UnitConverter::AREA_DM2;
             $unit = "-2";
-        //====================================================================//
-        // Surface - CentiMeter 2
+            //====================================================================//
+            // Surface - CentiMeter 2
         } elseif ($surface >= 1e-4) {
             $factor = UnitConverter::AREA_CM2;
             $unit = "-4";
-        //====================================================================//
-        // Surface - MilliMeter 2
+            //====================================================================//
+            // Surface - MilliMeter 2
         } else {
             $factor = UnitConverter::AREA_MM2;
             $unit = "-6";

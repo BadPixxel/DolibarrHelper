@@ -47,6 +47,7 @@ class WeightConverter extends AbstractUnitConverter
         //====================================================================//
         // Detect Generic Unit Factor
         $factor = static::detectUnit((string) $unit, UnitConverter::MASS_KG);
+
         //====================================================================//
         // Convert Value to Generic Factor
         return UnitConverter::normalizeWeight((float) $weight, $factor);
@@ -66,18 +67,18 @@ class WeightConverter extends AbstractUnitConverter
         if ($weight >= 1e3) {
             $factor = UnitConverter::MASS_TONNE;
             $unit = "3";
-        //====================================================================//
-        // Weight - KiloGram
+            //====================================================================//
+            // Weight - KiloGram
         } elseif ($weight >= 1) {
             $factor = UnitConverter::MASS_KILOGRAM;
             $unit = "0";
-        //====================================================================//
-        // Weight - Gram
+            //====================================================================//
+            // Weight - Gram
         } elseif ($weight >= 1e-3) {
             $factor = UnitConverter::MASS_GRAM;
             $unit = "-3";
-        //====================================================================//
-        // Weight - MilliGram
+            //====================================================================//
+            // Weight - MilliGram
         } else {
             $factor = UnitConverter::MASS_MILLIGRAM;
             $unit = "-6";

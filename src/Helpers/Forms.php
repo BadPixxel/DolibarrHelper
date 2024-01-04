@@ -142,23 +142,23 @@ class Forms extends AbstractHelper
         return  Helper::html()->absoluteLink(Helper::self(), $text, $switchQuery, $attr);
     }
 
-//    /**
-//     * Add a value to a combo form
-//     *
-//     * @param string $name    Parameter Name
-//     * @param string $value   Parameter Value
-//     * @param string $current Currently selected
-//     *
-//     * @return string
-//     */
-//    public static function R_Combo($name, $value, $current): string
-//    {
-//        if ($current == $value) {
-//            return '<option value="'.$value.'" selected="true">'.$name.'</option>';
-//        }
-//
-//        return '<option value="'.$value.'">'.$name.'</option>';
-//    }
+    //    /**
+    //     * Add a value to a combo form
+    //     *
+    //     * @param string $name    Parameter Name
+    //     * @param string $value   Parameter Value
+    //     * @param string $current Currently selected
+    //     *
+    //     * @return string
+    //     */
+    //    public static function R_Combo($name, $value, $current): string
+    //    {
+    //        if ($current == $value) {
+    //            return '<option value="'.$value.'" selected="true">'.$name.'</option>';
+    //        }
+    //
+    //        return '<option value="'.$value.'">'.$name.'</option>';
+    //    }
 
     //====================================================================//
     //  Display Buttons Outputs
@@ -179,21 +179,21 @@ class Forms extends AbstractHelper
         return $this->input("submit", "", $text, $submitAttr)->getHtml();
     }
 
-//    /**
-//     * Display a single submit button with standard decoration
-//     *
-//     * @param      string   $text       Button text
-//     * @param array  $attr Display Attributes
-//     *
-//     *  @return     string
-//     */
-//    public function submitBtn(string $text, $params = '', $align = 'center'): string
-//    {
-//        print '<a href="'.$_SERVER["PHP_SELF"].'?'.$params.'" class="button"> ';
-//        print '<input type="submit" class="button" value="'.$text.'">';
-//        print '</a>';
-//        print '&nbsp;&nbsp;&nbsp;';
-//    }
+    //    /**
+    //     * Display a single submit button with standard decoration
+    //     *
+    //     * @param      string   $text       Button text
+    //     * @param array  $attr Display Attributes
+    //     *
+    //     *  @return     string
+    //     */
+    //    public function submitBtn(string $text, $params = '', $align = 'center'): string
+    //    {
+    //        print '<a href="'.$_SERVER["PHP_SELF"].'?'.$params.'" class="button"> ';
+    //        print '<input type="submit" class="button" value="'.$text.'">';
+    //        print '</a>';
+    //        print '&nbsp;&nbsp;&nbsp;';
+    //    }
 
     /**
      * Add Generic Form Input to Buffer
