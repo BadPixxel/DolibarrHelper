@@ -57,6 +57,7 @@ class StocksActions
             "ref" => $ref,
             "lieu" => ucfirst($ref),
             "libelle" => ucfirst($ref),
+            "label" => ucfirst($ref),
             "statut" => 1,
         );
         self::setProperties($warehouse, array_replace_recursive($dfValues, $values));
