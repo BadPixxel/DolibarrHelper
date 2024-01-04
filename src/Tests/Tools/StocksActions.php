@@ -66,6 +66,7 @@ class StocksActions
         if (1 != $warehouse->create($user)) {
             Helper::log()->assertDolibarrErrors($warehouse);
         }
+        Assert::assertInstanceOf(Entrepot::class, $warehouse);
         Assert::assertNotEmpty($warehouse->id);
 
         return $warehouse;
