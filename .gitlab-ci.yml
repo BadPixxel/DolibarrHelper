@@ -56,32 +56,27 @@ stages:
     after_script:
       - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/after.sh | sh
 
-tests:php-8.0-v14:
-  image: registry.gitlab.com/badpixxel-projects/php-sdk:php-8.0
-  variables:
-    DOLIBARR_VERSION:  "14.0"
-  <<: *core_tests
+tests:php-8.1-v18:
+    image: registry.gitlab.com/badpixxel-projects/php-sdk:php-8.1
+    variables:
+        DOLIBARR_VERSION:  "18.0"
+    <<: *core_tests
+
+tests:php-8.0-v16:
+    image: registry.gitlab.com/badpixxel-projects/php-sdk:php-8.0
+    variables:
+        DOLIBARR_VERSION:  "16.0"
+    <<: *core_tests
+
+tests:php-7.4-v14:
+    image: registry.gitlab.com/badpixxel-projects/php-sdk:php-7.4
+    variables:
+        DOLIBARR_VERSION:  "14.0"
+    <<: *core_tests
 
 tests:php-7.4-v12:
-  image: registry.gitlab.com/badpixxel-projects/php-sdk:php-7.4
-  variables:
-    DOLIBARR_VERSION:  "12.0"
-  <<: *core_tests
+    image: registry.gitlab.com/badpixxel-projects/php-sdk:php-7.4
+    variables:
+        DOLIBARR_VERSION:  "12.0"
+    <<: *core_tests
 
-tests:php-7.3-v12:
-  image: registry.gitlab.com/badpixxel-projects/php-sdk:php-7.3
-  variables:
-    DOLIBARR_VERSION:  "12.0"
-  <<: *core_tests
-
-tests:php-7.2-v10:
-  image: registry.gitlab.com/badpixxel-projects/php-sdk:php-7.2
-  variables:
-    DOLIBARR_VERSION:  "10.0"
-  <<: *core_tests
-
-tests:php-7.2-v8:
-  image: registry.gitlab.com/badpixxel-projects/php-sdk:php-7.2
-  variables:
-    DOLIBARR_VERSION:  "8.0"
-  <<: *core_tests
