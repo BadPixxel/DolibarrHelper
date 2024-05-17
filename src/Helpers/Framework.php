@@ -253,7 +253,7 @@ class Framework extends AbstractHelper
     /**
      * Safe Get of A Dolibarr Path Url
      *
-     * @param string $relativePath Relitive Uri Path
+     * @param string $relativePath Relative Uri Path
      *
      * @return string
      */
@@ -273,6 +273,32 @@ class Framework extends AbstractHelper
         //====================================================================//
         // Link to Another Relative Path
         return dol_buildpath($relativePath, 1);
+    }
+
+    /**
+     * Build a Safe Html Query String
+     *
+     * @param null|array $query
+     *
+     * @return string
+     */
+    public static function getQuery(?array $query = null): string
+    {
+        $query ??= array();
+        //====================================================================//
+        //  Add Safety Token
+        if (function_exists("currentToken")) {
+            $query['token'] = currentToken();
+        }
+        //====================================================================//
+        //  If Empty Attributes
+        if (empty($query)) {
+            return "";
+        }
+
+        //====================================================================//
+        //  Return Query String
+        return sprintf("?%s", http_build_query($query));
     }
 
     /**

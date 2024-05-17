@@ -13,6 +13,8 @@
 
 namespace BadPixxel\Dolibarr\Models;
 
+use BadPixxel\Dolibarr\Helper;
+
 /**
  * For Helpers who Generate Html
  */
@@ -111,7 +113,7 @@ trait HtmlBuilderTrait
     /**
      * Merge Two Array of Query Values and return Html Query String
      *
-     * @param array      $default
+     * @param null|array $default
      * @param null|array $custom
      *
      * @return string
@@ -124,23 +126,9 @@ trait HtmlBuilderTrait
             is_array($default) ? $default : array(),
             is_array($custom) ? $custom : array()
         );
-        //====================================================================//
-        //  If Empty Attributes
-        if (empty($query)) {
-            return "";
-        }
-        //====================================================================//
-        //  Build Query String
-        $queryString = "";
-        $first = true;
-        foreach ($query as $key => $value) {
-            $queryString .= $first ? '?' : '&';
-            $queryString .= $key.'='.$value;
-            $first = false;
-        }
 
         //====================================================================//
-        //  Retun Query String
-        return $queryString;
+        //  Return Query String
+        return Helper::query($query);
     }
 }

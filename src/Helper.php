@@ -34,56 +34,56 @@ class Helper
      *
      * @var null|Framework
      */
-    private static $framework;
+    private static ?Framework $framework = null;
 
     /**
      * Info Card Helper
      *
      * @var null|Card
      */
-    private static $card;
+    private static ?Card $card = null;
 
     /**
      * Html Tables Helper
      *
      * @var null|Tables
      */
-    private static $tables;
+    private static ?Tables $tables = null;
 
     /**
      * Html Forms Helper
      *
      * @var null|Forms
      */
-    private static $forms;
+    private static ?Forms $forms = null;
 
     /**
      * Html Tables Forms Helper
      *
      * @var null|TableForms
      */
-    private static $tableForms;
+    private static ?TableForms $tableForms = null;
 
     /**
      * Html Elements Helper
      *
      * @var null|Elements
      */
-    private static $elements;
+    private static ?Elements $elements = null;
 
     /**
      * Dolibarr Logs Helper
      *
      * @var null|Logger
      */
-    private static $logger;
+    private static ?Logger $logger = null;
 
     /**
      * Dolibarr Units Helper
      *
      * @var null|Units
      */
-    private static $units;
+    private static ?Units $units = null;
 
     /**
      * Return name of this library
@@ -303,9 +303,7 @@ class Helper
     /**
      * Safe Get of A Dolibarr Path Url
      *
-     * @param string $relativePath Relitive Uri Path
-     *
-     * @return string
+     * @param string $relativePath Relative Uri Path
      */
     public static function uri(string $relativePath = ""): string
     {
@@ -313,9 +311,15 @@ class Helper
     }
 
     /**
+     * Safe Get of A Dolibarr Query Args as String
+     */
+    public static function query(?array $query = null): string
+    {
+        return self::dol()->getQuery($query);
+    }
+
+    /**
      * Safe Get Current User Uri
-     *
-     * @return string
      */
     public static function self(): string
     {
