@@ -5,7 +5,9 @@ parameters:
     inferPrivatePropertyTypeFromConstructor: true 
     universalObjectCratesClasses:
             - ArrayObject
-    ignoreErrors: 
+    ignoreErrors:
+        # Data type changed sinc V20
+        - '#Parameter \#1 \$unit of function measuring_units_string expects string, int given.#'
         # Replaces checkMissingIterableValueType, removed in PhpStan 2.0
         - '#no value type specified in iterable type#'
         # Replaces checkGenericClassInNonGenericObjectType, removed in PhpStan 2.0
