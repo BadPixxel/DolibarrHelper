@@ -13,12 +13,12 @@
 
 namespace BadPixxel\Dolibarr\Tests\Mink;
 
-use Behat\Mink\Driver\Goutte\Client as GoutteClient;
-use Behat\Mink\Driver\GoutteDriver;
+use Behat\Mink\Driver\BrowserKitDriver;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Element\NodeElement as Element;
 use Behat\Mink\Session;
-use GuzzleHttp\Client as GuzzleClient;
+use Symfony\Component\BrowserKit\HttpBrowser;
+use Symfony\Component\HttpClient\HttpClient;
 
 /**
  * Core Mink Functions to Access Dolibarr from Browser
@@ -73,7 +73,7 @@ trait CoreTrait
         // Connect User to Dolibarr
         $this->ensureLogin();
 
-        /** @var GoutteDriver $driver */
+        /** @var BrowserKitDriver $driver */
         $driver = $this->session->getDriver();
         $driver->getClient()->followRedirects(true);
     }
@@ -212,16 +212,14 @@ trait CoreTrait
     private function ensureInit()
     {
         if (!($this->session instanceof Session)) {
-            $client = new GoutteClient;
-            $client->setClient(
-                new GuzzleClient(array(
-                    'allow_redirects' => false,
-                    'cookies' => true,
-                    'verify' => false
-                ))
-            );
-            $driver = new GoutteDriver($client);
-            $this->session = new Session($driver);
+            //====================================================================//
+            // Redirections are followed by BrowserKit, not by the Http Client
+            $client = new HttpBrowser(HttpClient::create(array(
+                'max_redirects' => 0,
+                'verify_peer' => false,
+                'verify_host' => false,
+            )));
+            $this->session = new Session(new BrowserKitDriver($client));
         }
     }
 }

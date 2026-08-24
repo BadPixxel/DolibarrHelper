@@ -11,7 +11,7 @@
  *  file that was distributed with this source code.
  */
 
-namespace   BadPixxel\Dolibarr\Componants;
+namespace BadPixxel\Dolibarr\Componants;
 
 /**
  * Just a Generic Unit Converter
