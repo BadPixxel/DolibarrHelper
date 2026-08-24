@@ -99,7 +99,7 @@ class LengthConverter extends AbstractUnitConverter
         // Prepare Value for Display
         if (function_exists("measuring_units_string")) {
             $result->setPrint(
-                $result->getValue()." ".measuring_units_string($unit, "size")
+                $result->getValue()." ".measuring_units_string((int) $unit, "size")
             );
         }
 

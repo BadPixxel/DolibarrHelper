@@ -6,7 +6,6 @@ parameters:
     universalObjectCratesClasses:
             - ArrayObject
     ignoreErrors: 
-        - '#Parameter \#1 \$unit of function measuring_units_string expects int, string given.#'
         # Replaces checkMissingIterableValueType, removed in PhpStan 2.0
         - '#no value type specified in iterable type#'
         # Replaces checkGenericClassInNonGenericObjectType, removed in PhpStan 2.0
