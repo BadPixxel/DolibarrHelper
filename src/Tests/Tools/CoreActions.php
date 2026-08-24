@@ -109,9 +109,6 @@ class CoreActions
         $sql = "SELECT rowid FROM ".MAIN_DB_PREFIX."entity WHERE label = '".DOL_PHPUNIT_ENTITY."'";
         $resql = $db->query($sql);
         Assert::assertNotEmpty($resql, "Unable to Select PhpUnit Entity : ".DOL_PHPUNIT_ENTITY);
-        if (!$resql) {
-            return false;
-        }
         $row = $db->fetch_row($resql);
         $entity = $row[0];
         //====================================================================//
