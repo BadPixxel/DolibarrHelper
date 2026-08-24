@@ -56,27 +56,26 @@ stages:
     after_script:
       - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/after.sh | sh
 
-tests:php-8.1-v18:
-    image: registry.gitlab.com/badpixxel-projects/php-sdk:php-8.1
-    variables:
-        DOLIBARR_VERSION:  "18.0"
+################################################################
+# One job per PHP / Dolibarr pair. Each matrix entry holds a single
+# value per variable, so this lists the 7 supported pairs and does
+# not expand into a cartesian product.
+tests:
     <<: *core_tests
-
-tests:php-8.0-v16:
-    image: registry.gitlab.com/badpixxel-projects/php-sdk:php-8.0
-    variables:
-        DOLIBARR_VERSION:  "16.0"
-    <<: *core_tests
-
-tests:php-7.4-v14:
-    image: registry.gitlab.com/badpixxel-projects/php-sdk:php-7.4
-    variables:
-        DOLIBARR_VERSION:  "14.0"
-    <<: *core_tests
-
-tests:php-7.4-v12:
-    image: registry.gitlab.com/badpixxel-projects/php-sdk:php-7.4
-    variables:
-        DOLIBARR_VERSION:  "12.0"
-    <<: *core_tests
-
+    image:  registry.gitlab.com/badpixxel-projects/php-sdk:php-$PHP_VERSION
+    parallel:
+        matrix:
+            - PHP_VERSION:      "8.3"
+              DOLIBARR_VERSION: "24.0"
+            - PHP_VERSION:      "8.3"
+              DOLIBARR_VERSION: "22.0"
+            - PHP_VERSION:      "8.2"
+              DOLIBARR_VERSION: "20.0"
+            - PHP_VERSION:      "8.1"
+              DOLIBARR_VERSION: "18.0"
+            - PHP_VERSION:      "8.0"
+              DOLIBARR_VERSION: "16.0"
+            - PHP_VERSION:      "7.4"
+              DOLIBARR_VERSION: "14.0"
+            - PHP_VERSION:      "7.4"
+              DOLIBARR_VERSION: "12.0"

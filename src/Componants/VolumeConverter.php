@@ -96,7 +96,7 @@ class VolumeConverter extends AbstractUnitConverter
         // Prepare Value for Display
         if (function_exists("measuring_units_string")) {
             $result->setPrint(
-                $result->getValue()." ".measuring_units_string($unit, "volume")
+                $result->getValue()." ".measuring_units_string((int) $unit, "volume")
             );
         }
 
