@@ -6,8 +6,13 @@ parameters:
     universalObjectCratesClasses:
             - ArrayObject
     ignoreErrors:
-        # Data type changed sinc V20
-        - '#Parameter \#1 \$unit of function measuring_units_string expects string, int given.#'
+        # Dolibarr narrowed the scale parameter to ?int in V22, while V12 to V21
+        # still document it as string. No single type satisfies both contracts,
+        # so the reverse error is ignored on the versions that predate V22.
+        # The parameter is named $scale up to V19, then $unitscale.
+        -
+            message: '#Parameter \#1 \$(unit)?scale of function measuring_units_string expects string, int given\.#'
+            reportUnmatched: false
         # Replaces checkMissingIterableValueType, removed in PhpStan 2.0
         - '#no value type specified in iterable type#'
         # Replaces checkGenericClassInNonGenericObjectType, removed in PhpStan 2.0
